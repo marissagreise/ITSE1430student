@@ -10,7 +10,12 @@ namespace HelloWorld
     {
         static void Main( string[] args )
         {
-            int x = 10; 
+            string name = "Bob";
+
+            Console.WriteLine(name);
+
+            //double payRate  = 4.65;     //camel case for variable names
+            //int x = 10; 
             Console.WriteLine("Hello World");
         }
     }
