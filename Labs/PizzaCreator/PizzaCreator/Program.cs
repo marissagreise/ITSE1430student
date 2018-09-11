@@ -49,7 +49,7 @@ namespace PizzaCreator
 
         private static void NewOrder()
         {
-            Console.WriteLine("New Order");
+            
         }
 
         private static void ModifyOrder()
@@ -62,5 +62,10 @@ namespace PizzaCreator
             Console.WriteLine("Display Order");
         }
 
+        double small = 5.00;
+        float medium = 6.25f;
+        float 
+        
+        
     }
 }
