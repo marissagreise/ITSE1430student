@@ -49,6 +49,24 @@ namespace PizzaCreator
 
         private static void NewOrder()
         {
+            Console.WriteLine("Size (one required)");
+            Console.WriteLine("S)mall ($5)");
+            Console.WriteLine("M)edium ($6.25)");
+            Console.WriteLine("L)arge (8.25)");
+
+            do
+            {
+                ConsoleKeyInfo key = Console.ReadKey(true);
+                switch (key.KeyChar)
+                {
+                    case 'Y':
+                    case 'y':
+                    return true;
+
+                        
+                }
+            }
+
             
         }
 
@@ -62,9 +80,9 @@ namespace PizzaCreator
             Console.WriteLine("Display Order");
         }
 
-        double small = 5.00;
-        float medium = 6.25f;
-        float 
+        //double small = 5.00;
+        //float medium = 6.25f;
+        //float 
         
         
     }
