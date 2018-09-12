@@ -15,8 +15,63 @@ namespace Section1
             {
                 notQuit = DisplayMenu();    //declare outside the scope
             } while (notQuit);
-           
-           // PlayWithStrings();
+
+            // PlayWithStrings();
+        }
+        private static void PlayWithObjects()
+        {
+            int hours = 10;
+            Int32 hoursFull = 10;
+            var areEqual = hours == hoursFull;
+
+
+            var obj1 = "Hello";
+            DisplayObject(obj1);
+
+        }
+        private static void DisplayObject( object value )
+        {
+            if (value == null)
+                return;
+
+            // Approach 1
+            if (value is string)    // type check, what is the type of value? object, Make sense?
+            {
+                var str = (string)value;
+                Console.WriteLine(str);
+            } else
+            {
+                var str = value.ToString();
+                Console.WriteLine(str);
+            };
+
+            //Approach 2
+            var str2 = value as string;
+            if (str2 != null)
+                Console.WriteLine(str2);
+            else
+                Console.WriteLine(value.ToString());
+
+            //Approach 3
+            var str3 = value as string;
+            Console.WriteLine((str3 != null) ? str3.ToString() : value.ToString());
+
+            //Approach 4
+            var str4 = value as string;
+            Console.WriteLine((str4 ?? value).ToString()); // null coalescing
+
+            //Approach 5** efficent and protects from errors
+            //var str5 = value is string;
+            if (value is string str5)
+                Console.WriteLine(str5.ToString());
+            else
+                Console.WriteLine(value.ToString());     // coalescing 2
+
+            //Approach 6** efficent and protects from errors
+            var str6 = value as string;
+            Console.WriteLine((str6?.ToString()); // null conditional  E, ?.(func)
+
+
         }
 
         private static void PlayWithStrings()
@@ -56,9 +111,9 @@ namespace Section1
 
             //Null vs empty
             string missing = null; //null is = to 0
-            string empty = "";     // string with no content (not the same as null)
+            string empty = "";     // string with no content (not the same as null) 
             string empty2 = String.Empty; //dont do this, only when a language doesnt support strings.
-            
+
             // Checking for empty strings
             //if (firstName.Length ==0)
             //if (missing != null && firstName != "")   
@@ -98,7 +153,7 @@ namespace Section1
                 names[index] = Console.ReadLine();
             };
 
-            foreach(string name in names)
+            foreach (string name in names)
             //for (int index = 0; index < names.Length; ++index)
             {
                 // readonly - not allowed
@@ -113,48 +168,60 @@ namespace Section1
         private static bool DisplayMenu()
         {
             while (true)
-            { 
-            Console.WriteLine("A)dd Movie" );
-            Console.WriteLine("E)dit Movie");
-            Console.WriteLine("D)elete Movie");
-            Console.WriteLine("V)iew Movie");
-            Console.WriteLine("Q)uit");
+            {
+                Console.WriteLine("A)dd Movie");
+                Console.WriteLine("E)dit Movie");
+                Console.WriteLine("D)elete Movie");
+                Console.WriteLine("V)iew Movie");
+                Console.WriteLine("Q)uit");
 
                 string input = Console.ReadLine();
                 switch (input[0])
                 {
                     case 'a':
-                    case 'A': AddMovie(); return true;       //every case statement must end with a (return or break)
+                    case 'A':
+                    AddMovie();
+                    return true;       //every case statement must end with a (return or break)
 
                     case 'e':
-                    case 'E': EditMovie(); return true;
+                    case 'E':
+                    EditMovie();
+                    return true;
 
                     case 'd':
-                    case 'D': DeleteMovie(); return true;
+                    case 'D':
+                    DeleteMovie();
+                    return true;
 
                     case 'v':
-                    case 'V': ViewMovies(); return true;
+                    case 'V':
+                    ViewMovies();
+                    return true;
 
                     case 'q':
-                    case 'Q': ; return false;
+                    case 'Q':
+                    ;
+                    return false;
 
-                    default: Console.WriteLine("Please enter a valid value."); break;
+                    default:
+                    Console.WriteLine("Please enter a valid value.");
+                    break;
                 }
             };
         }
 
         private static void ViewMovies()
         {
-            if(!String.IsNullOrEmpty(name))
+            if (!String.IsNullOrEmpty(name))
             {
                 Console.WriteLine("No movies available");
                 return;
             };
 
             Console.WriteLine(name);
-            
-            if(!String.IsNullOrEmpty(description))
-            Console.WriteLine(description);
+
+            if (!String.IsNullOrEmpty(description))
+                Console.WriteLine(description);
 
 
             Console.WriteLine($"Run length = {runLength} min");
@@ -177,7 +244,7 @@ namespace Section1
 
             do
             {
-                ConsoleKeyInfo key = Console.ReadKey(true); 
+                ConsoleKeyInfo key = Console.ReadKey(true);
                 switch (key.KeyChar)
                 {
                     case 'Y':
@@ -220,7 +287,7 @@ namespace Section1
 
         }
 
-        private static int ReadInt32(string message, int minValue)
+        private static int ReadInt32( string message, int minValue )
         {
             while (true)
             {
@@ -238,7 +305,7 @@ namespace Section1
             };
         }
 
-        private static string ReadString (string message)
+        private static string ReadString( string message )
         {
             return ReadString(message, false);      // calls helper function
         }
@@ -250,7 +317,7 @@ namespace Section1
                 Console.WriteLine(message);
                 string input = Console.ReadLine();
 
-                if(!String.IsNullOrEmpty(input) || ! required)
+                if (!String.IsNullOrEmpty(input) || !required)
                     return input;
                 Console.WriteLine("You must enter a value");
             };
