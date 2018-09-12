@@ -21,6 +21,7 @@ namespace PizzaCreator
         {
             while(true)
             {
+
                 Console.WriteLine("N)ew Order ");
                 Console.WriteLine("M)odify Order ");
                 Console.WriteLine("D)isplay Order");
@@ -47,16 +48,59 @@ namespace PizzaCreator
             };
         }
 
-        private static void NewOrder()
+        private static bool NewOrder()
         {
-            Console.WriteLine("Size (one required).");
-            Console.WriteLine("S)mall ($5)");
-            Console.WriteLine("M)edium ($6.25)");
-            Console.WriteLine("L)arge (8.25)");
+            double small = 5.00;
+            double medium = 6.25;
+            double large = 8.25;
 
-            if i
+            Console.WriteLine("Size (one required).");
+            Console.WriteLine("\t1. Small ($5)");
+            Console.WriteLine("\t2. Medium ($6.25)");
+            Console.WriteLine("\t3. Large (8.25)");
+
+            string input = Console.ReadLine();
+            switch (input[0])
+            {
+                case'1':
+                SmallPizza(); return true;
+
+                case '2':
+                MediumPizza(); return true;
+
+                case '3':
+                LargePizza(); return true;
+
+            }
 
             
+        }
+        private static bool SmallPizza()
+        {
+            Console.WriteLine("Meats (zero or more). Each option is $0.75 extra.");
+            Console.WriteLine("\t1. Bacon");
+            Console.WriteLine("\t2. Ham");
+            Console.WriteLine("\t3. Pepperoni");
+            Console.WriteLine("\t4. Sausage");
+
+            string input = Console.ReadLine();
+            switch (input[0])
+            {
+                case '1':
+                
+            
+            }
+
+        }
+
+        private static bool MediumPizza()
+        {
+
+        }
+
+        private static bool LargePizza()
+        {
+
         }
 
         private static void ModifyOrder()
@@ -70,15 +114,11 @@ namespace PizzaCreator
         }
         
 
-        decimal small = 5.00m;
-        decimal medium = 6.25m;
-        decimal large = 8.25m;
+        double meats = 0.75;
+        double vegetables = 0.50;
+        double sauce = 1.00;
+        double xCheese = 1.25;
 
-        decimal meats = 0.75m;
-        decimal vegetables = 0.50m;
-        decimal sauce = 1.00m;
-        decimal xCheese = 1.25m;
-
-        decimal delivery = 2.50m;
+        double delivery = 2.50;
     }
 }
