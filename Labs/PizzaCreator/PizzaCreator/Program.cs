@@ -48,63 +48,81 @@ namespace PizzaCreator
             };
         }
 
-        private static bool NewOrder()
+        private static void NewOrder()
         {
-            double small = 5.00;
-            double medium = 6.25;
-            double large = 8.25;
+            SizeSelection(); 
+        }
 
+        private static void SizeSelection()
+        {
             Console.WriteLine("Size (one required).");
             Console.WriteLine("\t1. Small ($5)");
             Console.WriteLine("\t2. Medium ($6.25)");
             Console.WriteLine("\t3. Large (8.25)");
 
-            string input = Console.ReadLine();
-            switch (input[0])
-            {
-                case'1':
-                SmallPizza(); return true;
+            size = ReadInt32(1, 3);
 
-                case '2':
-                MediumPizza(); return true;
-
-                case '3':
-                LargePizza(); return true;
-
-            }
-
-            
         }
-        private static bool SmallPizza()
-        {
-            Console.WriteLine("Meats (zero or more). Each option is $0.75 extra.");
-            Console.WriteLine("\t1. Bacon");
-            Console.WriteLine("\t2. Ham");
-            Console.WriteLine("\t3. Pepperoni");
-            Console.WriteLine("\t4. Sausage");
 
-            string input = Console.ReadLine();
-            switch (input[0])
+        private static int ReadInt32(int minValue, int maxValue)
+        {
+            while (true)
             {
-                case '1':
                 
-            
+                var input = Console.ReadLine();
+
+                if (Int32.TryParse(input, out var result))  
+                {
+                    if (result >= minValue && result <= maxValue)
+                        return result;
+                };
+
+                Console.WriteLine($"You must enter an interger value >= {minValue}");
+            };
+        }
+
+        private static void MeatSelection()
+        {
+            while (true)
+            {
+                Console.WriteLine("Meats (zero or more). Each option is $0.75 extra.");
+                Console.WriteLine("\t1. Bacon");
+                Console.WriteLine("\t2. Ham");
+                Console.WriteLine("\t3. Pepperoni");
+                Console.WriteLine("\t4. Sausage");
+                Console.WriteLine("\t5. Done");
+
+
+                var temp = ReadInt32(1, 5);
+                switch (temp)
+                {
+                    case 1:
+                    bacon = !bacon;
+                    break;
+
+                    case 2:
+                    ham = !ham;
+                    break;
+
+                    case 3:
+                    pepperoni = !pepperoni;
+                    break;
+
+                    case 4:
+                    sausage = !sausage;
+                    break;
+
+                    case 5: return;
+
+
+                }
+
             }
-
-        }
-
-        private static bool MediumPizza()
-        {
-
-        }
-
-        private static bool LargePizza()
-        {
-
         }
 
         private static void ModifyOrder()
         {
+
             Console.WriteLine("Modify Order");
         }
 
@@ -112,13 +130,30 @@ namespace PizzaCreator
         {
             Console.WriteLine("Display Order");
         }
+
+        private static decimal FinishPrice()
+        {
+            
+            var price = 0m; 
+            var small = 5.00;
+            var medium = 6.25;
+            var large = 8.25;
+            var xMeats = 0.75;
+            var vegetables = 0.50;
+            var sauce = 1.00;
+            var xCheese = 1.25;
+
+            var delivery = 2.50;
+
+            return price;
+        }
+
+        static int size;
+        static bool bacon;
+        static bool ham;
+        static bool pepperoni;
+        static bool sausage;
+                
         
-
-        double meats = 0.75;
-        double vegetables = 0.50;
-        double sauce = 1.00;
-        double xCheese = 1.25;
-
-        double delivery = 2.50;
     }
 }
