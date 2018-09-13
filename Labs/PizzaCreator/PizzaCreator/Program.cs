@@ -19,7 +19,7 @@ namespace PizzaCreator
 
         private static bool DisplayMenu()
         {
-            while(true)
+            while (true)
             {
 
                 Console.WriteLine("N)ew Order ");
@@ -50,7 +50,9 @@ namespace PizzaCreator
 
         private static void NewOrder()
         {
-            SizeSelection(); 
+            SizeSelection();
+            MeatSelection();
+
         }
 
         private static void SizeSelection()
@@ -64,14 +66,14 @@ namespace PizzaCreator
 
         }
 
-        private static int ReadInt32(int minValue, int maxValue)
+        private static int ReadInt32( int minValue, int maxValue )
         {
             while (true)
             {
-                
+
                 var input = Console.ReadLine();
 
-                if (Int32.TryParse(input, out var result))  
+                if (Int32.TryParse(input, out var result))
                 {
                     if (result >= minValue && result <= maxValue)
                         return result;
@@ -113,7 +115,6 @@ namespace PizzaCreator
                     break;
 
                     case 5: return;
-
 
                 }
 
