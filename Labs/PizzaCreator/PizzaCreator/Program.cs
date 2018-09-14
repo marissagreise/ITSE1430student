@@ -192,12 +192,16 @@ namespace PizzaCreator
         {
             Console.WriteLine("Here is your order");
 
+           CalculateTotal();
 
         }
 
-        private static decimal FinishPrice()
+        private static decimal CalculateTotal)
         {
-            //if (size )
+            if (size)
+            {
+
+            }
             var price = 0m; 
             var small = 5.00;
             var medium = 6.25;
