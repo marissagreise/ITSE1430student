@@ -52,6 +52,9 @@ namespace PizzaCreator
         {
             SizeSelection();
             MeatSelection();
+            VeggieSelection();
+            SauceSelection();
+            DeliveryOptions();
 
         }
 
@@ -120,6 +123,64 @@ namespace PizzaCreator
 
             }
         }
+        private static void VeggieSelection()
+        {
+            while (true)
+            {
+                Console.WriteLine("Vegetables (zero or more). Each option is $0.50 extra.");
+                Console.WriteLine("\t1. Black olives");
+                Console.WriteLine("\t2. Mushrooms");
+                Console.WriteLine("\t3. Onions");
+                Console.WriteLine("\t4. Peppers");
+                Console.WriteLine("\t5. Done");
+
+
+                var temp = ReadInt32(1, 5);
+                switch (temp)
+                {
+                    case 1:
+                    blackOlives = !blackOlives;
+                    break;
+
+                    case 2:
+                    mushrooms = !mushrooms;
+                    break;
+
+                    case 3:
+                    onions = !onions;
+                    break;
+
+                    case 4:
+                    peppers = !peppers;
+                    break;
+
+                    case 5:
+                    return;
+
+                }
+
+            }
+        }
+
+        private static void SauceSelection()
+        {
+            Console.WriteLine("Sauce (one is required).");
+            Console.WriteLine("\t1. Traditional ($0)");
+            Console.WriteLine("\t2. Garlic ($1)");
+            Console.WriteLine("\t3. Oregano ($1)");
+
+            sauce = ReadInt32(1, 3);
+       
+        }
+
+        private static void DeliveryOptions()
+        {
+            Console.WriteLine("Delivery (one is required).");
+            Console.WriteLine("\t1. Take Out ($0)");
+            Console.WriteLine("\t2. Delivery ($2.50)");
+
+            delivery = ReadInt32(1, 2);
+        }
 
         private static void ModifyOrder()
         {
@@ -129,12 +190,14 @@ namespace PizzaCreator
 
         private static void DisplayOrder()
         {
-            Console.WriteLine("Display Order");
+            Console.WriteLine("Here is your order");
+
+
         }
 
         private static decimal FinishPrice()
         {
-            
+            //if (size )
             var price = 0m; 
             var small = 5.00;
             var medium = 6.25;
@@ -154,6 +217,12 @@ namespace PizzaCreator
         static bool ham;
         static bool pepperoni;
         static bool sausage;
+        static bool blackOlives;
+        static bool mushrooms;
+        static bool onions;
+        static bool peppers;
+        static int sauce;
+        static int delivery;
                 
         
     }
