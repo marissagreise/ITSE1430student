@@ -198,21 +198,31 @@ namespace PizzaCreator
 
         private static decimal CalculateTotal)
         {
+            var price = 0m;
             switch(size)
+            { 
+                case 1: price +=5; break;
+                
+                case 2: price +=6.25; break;
+                 
+                case 3: price +=8.25; break;
+            };
             
+            
+            
+            
+            var small = 5.00;
+            var medium = 6.25;
+            var large = 8.25;
+            var xMeats = 0.75;
+            var vegetables = 0.50;
+            var sauce = 1.00;
+            var xCheese = 1.25;
 
-            //var price = 0m; 
-            //var small = 5.00;
-            //var medium = 6.25;
-            //var large = 8.25;
-            //var xMeats = 0.75;
-            //var vegetables = 0.50;
-            //var sauce = 1.00;
-            //var xCheese = 1.25;
+            var delivery = 2.50;
 
-            //var delivery = 2.50;
+            return price;
 
-            //return price;
         }
 
         static int size;
