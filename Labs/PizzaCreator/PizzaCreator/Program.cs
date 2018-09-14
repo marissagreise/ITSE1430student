@@ -173,6 +173,16 @@ namespace PizzaCreator
 
         }
 
+        private static void CheeseSelection()
+        {
+            Console.WriteLine("Cheese (one is required). ");
+            Console.WriteLine("\t1. Regular ($0)");
+            Console.WriteLine("\t2. Extra (1.25)");
+
+            cheese = ReadInt32(1, 2);
+
+        }
+
         private static void DeliveryOptions()
         {
             Console.WriteLine("Delivery (one is required).");
@@ -192,35 +202,69 @@ namespace PizzaCreator
         {
             Console.WriteLine("Here is your order");
 
-            //CalculateTotal();
+            CalculateTotal();
+            
 
         }
 
-        private static decimal CalculateTotal)
+        private static decimal CalculateTotal()
         {
+            var sauce = 1.00m;
+            var vegetables = 0.50m;
+            var xMeats = 0.75m;
             var price = 0m;
             switch(size)
             { 
                 case 1: price +=5; break;
                 
-                case 2: price +=6.25; break;
+                case 2: price +=6.25m; break;
                  
-                case 3: price +=8.25; break;
+                case 3: price +=8.25m; break;
             };
-            
-            
-            
-            
-            var small = 5.00;
-            var medium = 6.25;
-            var large = 8.25;
-            var xMeats = 0.75;
-            var vegetables = 0.50;
-            var sauce = 1.00;
-            var xCheese = 1.25;
 
-            var delivery = 2.50;
+            if (bacon)
+                price += xMeats;
+            if (ham)
+                price += xMeats;
+            if (pepperoni)
+                price += xMeats;
+            if (sausage)
+                price += xMeats;
+            if (blackOlives)
+                price += vegetables;
+            if (mushrooms)
+                price += vegetables;
+            if (onions)
+                price += vegetables;
+            if (peppers)
+                price += vegetables;
 
+            switch (sauce)
+            {
+                case 1: price += 0; break;
+
+                case 2: price += 1; break;
+
+                case 3: price += 1; break;
+
+            }
+
+            switch (cheese)
+            {
+                case 1: price += 0; break;
+
+                case 2: price += 1.25m; break;
+
+            }
+
+            switch (delivery)
+            {
+                case 1: price += 0; break;
+
+                case 2: price += 2.50m; break;
+            }
+
+            Console.WriteLine(price);
             return price;
 
         }
@@ -235,6 +279,7 @@ namespace PizzaCreator
         static bool onions;
         static bool peppers;
         static int sauce;
+        static int cheese;
         static int delivery;
                 
         
