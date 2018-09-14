@@ -170,7 +170,7 @@ namespace PizzaCreator
             Console.WriteLine("\t3. Oregano ($1)");
 
             sauce = ReadInt32(1, 3);
-       
+
         }
 
         private static void DeliveryOptions()
@@ -192,28 +192,27 @@ namespace PizzaCreator
         {
             Console.WriteLine("Here is your order");
 
-           CalculateTotal();
+            //CalculateTotal();
 
         }
 
         private static decimal CalculateTotal)
         {
-            if (size)
-            {
+            switch(size)
+            
 
-            }
-            var price = 0m; 
-            var small = 5.00;
-            var medium = 6.25;
-            var large = 8.25;
-            var xMeats = 0.75;
-            var vegetables = 0.50;
-            var sauce = 1.00;
-            var xCheese = 1.25;
+            //var price = 0m; 
+            //var small = 5.00;
+            //var medium = 6.25;
+            //var large = 8.25;
+            //var xMeats = 0.75;
+            //var vegetables = 0.50;
+            //var sauce = 1.00;
+            //var xCheese = 1.25;
 
-            var delivery = 2.50;
+            //var delivery = 2.50;
 
-            return price;
+            //return price;
         }
 
         static int size;
