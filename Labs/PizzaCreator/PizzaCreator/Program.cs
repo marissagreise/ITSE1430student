@@ -55,6 +55,7 @@ namespace PizzaCreator
             VeggieSelection();
             SauceSelection();
             DeliveryOptions();
+            
 
         }
 
@@ -98,8 +99,8 @@ namespace PizzaCreator
                 Console.WriteLine("\t5. Done");
 
 
-                var temp = ReadInt32(1, 5);
-                switch (temp)
+                var meat = ReadInt32(1, 5);
+                switch (meat)
                 {
                     case 1:
                     bacon = !bacon;
@@ -201,8 +202,10 @@ namespace PizzaCreator
         private static void DisplayOrder()
         {
             Console.WriteLine("Here is your order");
+            
 
             CalculateTotal();
+
             
 
         }
@@ -264,11 +267,12 @@ namespace PizzaCreator
                 case 2: price += 2.50m; break;
             }
 
-            Console.WriteLine(price);
+            
             return price;
 
         }
 
+       
         static int size;
         static bool bacon;
         static bool ham;
@@ -281,7 +285,7 @@ namespace PizzaCreator
         static int sauce;
         static int cheese;
         static int delivery;
-                
+
         
     }
 }
