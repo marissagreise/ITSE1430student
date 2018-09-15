@@ -201,7 +201,7 @@ namespace PizzaCreator
 
         private static void DisplayOrder()
         {
-            Console.WriteLine("Here is your order");
+            Console.WriteLine("\tHere is your order");
             
 
             CalculateTotal();
@@ -218,9 +218,13 @@ namespace PizzaCreator
             var price = 0m;
             switch(size)
             { 
-                case 1: price +=5; break;
+                case 1: price +=5;
+                Console.WriteLine("\tSmall Pizza\t\t$5.00");
+                break;
                 
-                case 2: price +=6.25m; break;
+                case 2: price +=6.25m;
+                Console.WriteLine("\tMedium Pizza \t\t$6.25");
+                break;
                  
                 case 3: price +=8.25m; break;
             };
@@ -244,7 +248,9 @@ namespace PizzaCreator
 
             switch (sauce)
             {
-                case 1: price += 0; break;
+                case 1: price += 0;
+                
+                break;
 
                 case 2: price += 1; break;
 
