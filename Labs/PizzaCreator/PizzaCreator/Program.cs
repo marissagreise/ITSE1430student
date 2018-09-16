@@ -1,4 +1,8 @@
-﻿using System;
+﻿//ITSE 1430
+//Marissa Greise
+//9/15/2018
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -56,6 +60,7 @@ namespace PizzaCreator
             SauceSelection();
             CheeseSelection();
             DeliveryOptions();
+            DisplayOrder();
 
         }
 
@@ -83,7 +88,7 @@ namespace PizzaCreator
                         return result;
                 };
 
-                Console.WriteLine($"You must enter an interger value >= {minValue}");
+                Console.WriteLine($"You must enter a correct interger value >= {minValue}");
             };
         }
 
@@ -195,7 +200,7 @@ namespace PizzaCreator
 
         private static void ModifyOrder()
         {
-            if (String.IsNullOrEmpty(size))
+           // if (String.IsNullOrEmpty(size))
                 Console.WriteLine("An order does not exist.");
             return;
             
