@@ -200,9 +200,7 @@ namespace PizzaCreator
 
         private static void ModifyOrder()
         {
-           // if (String.IsNullOrEmpty(size))
-                Console.WriteLine("An order does not exist.");
-            return;
+           
             
         }
 
