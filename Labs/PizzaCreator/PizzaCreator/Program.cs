@@ -54,8 +54,8 @@ namespace PizzaCreator
             MeatSelection();
             VeggieSelection();
             SauceSelection();
+            CheeseSelection();
             DeliveryOptions();
-            
 
         }
 
@@ -195,35 +195,109 @@ namespace PizzaCreator
 
         private static void ModifyOrder()
         {
-
-            Console.WriteLine("Modify Order");
+            if (String.IsNullOrEmpty(size))
+                Console.WriteLine("An order does not exist.");
+            return;
+            
         }
 
         private static void DisplayOrder()
         {
-            Console.WriteLine("\tHere is your order");
-            
+            Console.WriteLine("\tHere is your order\n");
 
-            CalculateTotal();
+            switch (size)
+            {
+                case 1:
+                Console.WriteLine("\tSmall Pizza\t\t$5.00");
+                break;
 
-            
+                case 2:
+                Console.WriteLine("\tMedium Pizza\t\t$6.25");
+                break;
+
+                case 3:
+                Console.WriteLine("\tLarge Pizza\t\t$8.25");
+                break;
+
+            }
+
+            switch (delivery)
+            {
+                case 1:
+                Console.WriteLine("\tTake Out");
+                break;
+
+                case 2:
+                Console.WriteLine("\tDelivery    \t\t$2.50");
+                break;
+            }
+            Console.WriteLine("\tMeats");
+            if (bacon)
+                Console.WriteLine("\t\tBacon       \t$0.75");
+            if (ham)
+                Console.WriteLine("\t\tHam         \t$0.75");
+            if (pepperoni)
+                Console.WriteLine("\t\tPepperoni   \t$0.75");
+            if(sausage)
+                Console.WriteLine("\t\tSausage     \t$0.75");
+            Console.WriteLine("\tVegetables");
+
+            if (blackOlives)
+                Console.WriteLine("\t\tBlack Olives\t$0.50");
+            if (mushrooms)
+                Console.WriteLine("\t\tMushrooms   \t$0.50");
+            if (onions)
+                Console.WriteLine("\t\tOnions      \t$0.50");
+            if (peppers)
+                Console.WriteLine("\t\tPeppers     \t$0.50");
+
+            Console.WriteLine("\tSauce");
+
+            switch (sauce)
+            {
+                case 1:
+                Console.WriteLine("\t\tTraditional");
+                break;
+
+                case 2:
+                Console.WriteLine("\t\tGarlic         \t$1.00");
+                break;
+
+                case 3:
+                Console.WriteLine("\t\tOregano        \t$1.00");
+                break;
+
+            }
+
+            Console.WriteLine("\tCheese");
+
+            switch (cheese)
+            {
+                case 1:
+                Console.WriteLine("\t\tRegular");
+                break;
+
+                case 2:
+                Console.WriteLine("\t\tExtra        \t$1.25");
+                break;
+            }
+
+            Console.WriteLine("\t______________________________");
+            Console.WriteLine("\tTotal       \t\t$" + CalculateTotal());            
 
         }
 
         private static decimal CalculateTotal()
         {
-            var sauce = 1.00m;
             var vegetables = 0.50m;
             var xMeats = 0.75m;
             var price = 0m;
             switch(size)
             { 
                 case 1: price +=5;
-                Console.WriteLine("\tSmall Pizza\t\t$5.00");
                 break;
                 
                 case 2: price +=6.25m;
-                Console.WriteLine("\tMedium Pizza \t\t$6.25");
                 break;
                  
                 case 3: price +=8.25m; break;
@@ -252,9 +326,9 @@ namespace PizzaCreator
                 
                 break;
 
-                case 2: price += 1; break;
+                case 2: price += 1m; break;
 
-                case 3: price += 1; break;
+                case 3: price += 1m; break;
 
             }
 
@@ -273,12 +347,8 @@ namespace PizzaCreator
                 case 2: price += 2.50m; break;
             }
 
-            
             return price;
-
         }
-
-       
         static int size;
         static bool bacon;
         static bool ham;
@@ -291,7 +361,5 @@ namespace PizzaCreator
         static int sauce;
         static int cheese;
         static int delivery;
-
-        
     }
 }
