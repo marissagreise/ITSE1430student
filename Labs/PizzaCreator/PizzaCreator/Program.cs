@@ -200,7 +200,13 @@ namespace PizzaCreator
 
         private static void ModifyOrder()
         {
-           
+            switch (size)
+            {
+                case 1:
+                Console.WriteLine("Selected" + size);
+                break;
+
+            }
             
         }
 
