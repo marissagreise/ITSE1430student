@@ -66,9 +66,9 @@ namespace PizzaCreator
         private static void SizeSelection()
         {
             Console.WriteLine("Size (one required).");
-            Console.WriteLine("\t1. Small ($5)");
-            Console.WriteLine("\t2. Medium ($6.25)");
-            Console.WriteLine("\t3. Large (8.25)");
+            Console.WriteLine("\t1. Small ($5) {0}", size == 1 ? "Selected": " ");
+            Console.WriteLine("\t2. Medium ($6.25) {0}", size  == 2 ? "Selected" : " ");
+            Console.WriteLine("\t3. Large ($8.25)");
 
             size = ReadInt32(1, 3);
 
@@ -202,6 +202,7 @@ namespace PizzaCreator
             Console.WriteLine("\t(->) Indicates the option you selected");
             DisplayOrder();
             NewOrder();
+
 
         }
 
