@@ -68,7 +68,7 @@ namespace PizzaCreator
             Console.WriteLine("Size (one required).");
             Console.WriteLine("\t1. Small ($5) {0}", size == 1 ? "Selected": " ");
             Console.WriteLine("\t2. Medium ($6.25) {0}", size  == 2 ? "Selected" : " ");
-            Console.WriteLine("\t3. Large ($8.25)");
+            Console.WriteLine("\t3. Large ($8.25) {0}", size == 3 ? "Selected" : " ");
 
             size = ReadInt32(1, 3);
 
@@ -170,9 +170,9 @@ namespace PizzaCreator
         private static void SauceSelection()
         {
             Console.WriteLine("Sauce (one is required).");
-            Console.WriteLine("\t1. Traditional ($0)");
-            Console.WriteLine("\t2. Garlic ($1)");
-            Console.WriteLine("\t3. Oregano ($1)");
+            Console.WriteLine("\t1. Traditional ($0) {0}", sauce == 1 ? "Selected" : " ");
+            Console.WriteLine("\t2. Garlic ($1) {0}", sauce == 2 ? "Selected" : " ");
+            Console.WriteLine("\t3. Oregano ($1) {0}", sauce == 1 ? "Selected" : " ");
 
             sauce = ReadInt32(1, 3);
 
@@ -181,8 +181,8 @@ namespace PizzaCreator
         private static void CheeseSelection()
         {
             Console.WriteLine("Cheese (one is required). ");
-            Console.WriteLine("\t1. Regular ($0)");
-            Console.WriteLine("\t2. Extra (1.25)");
+            Console.WriteLine("\t1. Regular ($0) {0}", cheese == 1 ? "Selected" : " ");
+            Console.WriteLine("\t2. Extra (1.25) {0}", cheese == 2 ? "Selected" : " ");
 
             cheese = ReadInt32(1, 2);
 
@@ -191,19 +191,16 @@ namespace PizzaCreator
         private static void DeliveryOptions()
         {
             Console.WriteLine("Delivery (one is required).");
-            Console.WriteLine("\t1. Take Out ($0)");
-            Console.WriteLine("\t2. Delivery ($2.50)");
+            Console.WriteLine("\t1. Take Out ($0) {0}", delivery == 1 ? "Selected" : " ");
+            Console.WriteLine("\t2. Delivery ($2.50) {0}", delivery == 2 ? "Selected" : " ");
 
             delivery = ReadInt32(1, 2);
         }
 
         private static void ModifyOrder()
         {
-            Console.WriteLine("\t(->) Indicates the option you selected");
-            DisplayOrder();
+            Console.WriteLine("\t(Selected) indicates the option you selected");
             NewOrder();
-
-
         }
 
         private static void DisplayOrder()
@@ -213,15 +210,15 @@ namespace PizzaCreator
             switch (size)
             {
                 case 1:
-                Console.WriteLine("\t->Small Pizza\t\t$5.00");
+                Console.WriteLine("\tSmall Pizza \t\t$5.00");
                 break;
 
                 case 2:
-                Console.WriteLine("\t->Medium Pizza\t\t$6.25");
+                Console.WriteLine("\tMedium Pizza\t\t$6.25");
                 break;
 
                 case 3:
-                Console.WriteLine("\t->Large Pizza\t\t$8.25");
+                Console.WriteLine("\tLarge Pizza \t\t$8.25");
                 break;
 
             }
@@ -229,11 +226,11 @@ namespace PizzaCreator
             switch (delivery)
             {
                 case 1:
-                Console.WriteLine("\t->Take Out");
+                Console.WriteLine("\tTake Out");
                 break;
 
                 case 2:
-                Console.WriteLine("\t->Delivery    \t\t$2.50");
+                Console.WriteLine("\tDelivery    \t\t$2.50");
                 break;
             }
             Console.WriteLine("\tMeats");
@@ -261,15 +258,15 @@ namespace PizzaCreator
             switch (sauce)
             {
                 case 1:
-                Console.WriteLine("\t\t->Traditional");
+                Console.WriteLine("\t\tTraditional");
                 break;
 
                 case 2:
-                Console.WriteLine("\t\t->Garlic         $1.00");
+                Console.WriteLine("\t\tGarlic         $1.00");
                 break;
 
                 case 3:
-                Console.WriteLine("\t\t->Oregano        $1.00");
+                Console.WriteLine("\t\tOregano        $1.00");
                 break;
 
             }
@@ -279,11 +276,11 @@ namespace PizzaCreator
             switch (cheese)
             {
                 case 1:
-                Console.WriteLine("\t\t->Regular");
+                Console.WriteLine("\t\tRegular");
                 break;
 
                 case 2:
-                Console.WriteLine("\t\t->Extra        \t$1.25");
+                Console.WriteLine("\t\tExtra          \t$1.25");
                 break;
             }
 
