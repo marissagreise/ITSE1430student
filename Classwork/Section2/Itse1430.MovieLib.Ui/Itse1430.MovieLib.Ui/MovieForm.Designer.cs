@@ -64,7 +64,6 @@
             this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Description";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // _txtDescription
             // 
@@ -114,7 +113,7 @@
             this._btnSave.TabIndex = 8;
             this._btnSave.Text = "Save";
             this._btnSave.UseVisualStyleBackColor = true;
-            this._btnSave.Click += new System.EventHandler(this.onSave);
+            this._btnSave.Click += new System.EventHandler(this.OnSave);
             // 
             // _btnCancel
             // 
@@ -124,7 +123,7 @@
             this._btnCancel.TabIndex = 9;
             this._btnCancel.Text = "Cancel";
             this._btnCancel.UseVisualStyleBackColor = true;
-            this._btnCancel.Click += new System.EventHandler(this.onCancel);
+            this._btnCancel.Click += new System.EventHandler(this.OnCancel);
             // 
             // MovieForm
             // 
