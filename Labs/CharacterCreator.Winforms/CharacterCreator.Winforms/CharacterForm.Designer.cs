@@ -179,6 +179,8 @@
             this.Controls.Add(this._txtName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximumSize = new System.Drawing.Size(376, 510);
+            this.MinimumSize = new System.Drawing.Size(376, 510);
             this.Name = "CharacterForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
