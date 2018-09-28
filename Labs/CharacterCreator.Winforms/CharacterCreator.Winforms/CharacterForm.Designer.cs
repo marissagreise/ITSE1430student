@@ -65,7 +65,7 @@
             this._txtName.Location = new System.Drawing.Point(126, 25);
             this._txtName.Name = "_txtName";
             this._txtName.Size = new System.Drawing.Size(143, 20);
-            this._txtName.TabIndex = 3;
+            this._txtName.TabIndex = 0;
             // 
             // label3
             // 
@@ -91,7 +91,7 @@
             this._txtAttributes.Multiline = true;
             this._txtAttributes.Name = "_txtAttributes";
             this._txtAttributes.Size = new System.Drawing.Size(143, 46);
-            this._txtAttributes.TabIndex = 7;
+            this._txtAttributes.TabIndex = 3;
             // 
             // label5
             // 
@@ -108,14 +108,14 @@
             this._txtDescription.Multiline = true;
             this._txtDescription.Name = "_txtDescription";
             this._txtDescription.Size = new System.Drawing.Size(143, 96);
-            this._txtDescription.TabIndex = 9;
+            this._txtDescription.TabIndex = 4;
             // 
             // _buttonSave
             // 
             this._buttonSave.Location = new System.Drawing.Point(126, 426);
             this._buttonSave.Name = "_buttonSave";
             this._buttonSave.Size = new System.Drawing.Size(75, 23);
-            this._buttonSave.TabIndex = 10;
+            this._buttonSave.TabIndex = 5;
             this._buttonSave.Text = "Save";
             this._buttonSave.UseVisualStyleBackColor = true;
             this._buttonSave.Click += new System.EventHandler(this.OnSave);
@@ -125,13 +125,14 @@
             this._buttonCancel.Location = new System.Drawing.Point(236, 426);
             this._buttonCancel.Name = "_buttonCancel";
             this._buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this._buttonCancel.TabIndex = 11;
+            this._buttonCancel.TabIndex = 6;
             this._buttonCancel.Text = "Cancel";
             this._buttonCancel.UseVisualStyleBackColor = true;
             this._buttonCancel.Click += new System.EventHandler(this.OnCancel);
             // 
             // _comboProfession
             // 
+            this._comboProfession.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._comboProfession.FormattingEnabled = true;
             this._comboProfession.Items.AddRange(new object[] {
             "Fighter",
@@ -142,11 +143,12 @@
             this._comboProfession.Location = new System.Drawing.Point(126, 74);
             this._comboProfession.Name = "_comboProfession";
             this._comboProfession.Size = new System.Drawing.Size(143, 21);
-            this._comboProfession.TabIndex = 12;
-            this._comboProfession.Text = "(Select profession)";
+            this._comboProfession.Sorted = true;
+            this._comboProfession.TabIndex = 1;
             // 
             // _comboRace
             // 
+            this._comboRace.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._comboRace.FormattingEnabled = true;
             this._comboRace.Items.AddRange(new object[] {
             "Dwarf",
@@ -157,9 +159,7 @@
             this._comboRace.Location = new System.Drawing.Point(126, 126);
             this._comboRace.Name = "_comboRace";
             this._comboRace.Size = new System.Drawing.Size(143, 21);
-            this._comboRace.TabIndex = 13;
-            this._comboRace.Text = "(Select race)";
-            this._comboRace.SelectedIndexChanged += new System.EventHandler(this._comboRace_SelectedIndexChanged);
+            this._comboRace.TabIndex = 2;
             // 
             // CharacterForm
             // 

@@ -17,6 +17,8 @@ namespace CharacterCreator.Winforms
             InitializeComponent();
         }
 
+        public Character Character;
+
         private void OnCancel( object sender, EventArgs e )
         {
             DialogResult = DialogResult.Cancel;
@@ -26,22 +28,24 @@ namespace CharacterCreator.Winforms
         private void OnSave( object sender, EventArgs e )
         {
             var character = new Character();
-            //var character2 = new Character();
+            var character2 = new Character();
+            var name = character2.GetName();
 
-            character.Name = _txtName.Text;
+            character.SetName (_txtName.Text);
             if (String.IsNullOrEmpty(_txtName.Text))
                 return;
 
-            character.Profession = _comboProfession.Text;
+            character.SetProfession(_comboProfession.Text);
 
-            character.Race = _comboRace.Text;
+            character.SetRace(_comboRace.Text);
 
-            character.Attributes = GetInt32(_txtAttributes);
-            if (character.Attributes < 0)
+            character.SetAttributes (GetInt32(_txtAttributes));
+            if (character.GetAttributes() < 0)
                 return;
 
-            character.Description = _txtDescription.Text;
+            character.SetDescription (_txtDescription.Text);
 
+            Character = character;
             DialogResult = DialogResult.OK;
             Close();
         }
@@ -56,9 +60,5 @@ namespace CharacterCreator.Winforms
             return -1;
         }
 
-        private void _comboRace_SelectedIndexChanged( object sender, EventArgs e )
-        {
-
-        }
     }
 }
