@@ -8,51 +8,30 @@ namespace Itse1430.MovieLib
 {
     public class Movie
     {
-        public string GetName ()
+        public string Name
         {
-            return _name ?? " ";
+            get { return _name ?? ""; } //string get()
+            set { _name = value; } //void set(string value)
         }
-        public void SetName (string value)
-        {
-            _name = value;
-        }
-        private string _name;
-
+        private string _name = "";
         // public System.String Name; fully qualified namespace
 
-        public string GetDescription()
+        public string Description
         {
-            return _description ?? " ";
-        }
-        public void SetDescription (string value)
-        {
-            _description = value;
+            get { return _description ?? ""; }
+            set { _description = value; }
         }
         private string _description;
 
-        public int GetReleaseYear()
-        {
-            return _releaseYear;
-        }
-        public void SetReleaseYear (int value)
-        {
-            if (value >= 1900)
-            _releaseYear = value;
-        }
-        private int _releaseYear;
-        public int GetRunLength()
-        {
-            return _runLength;
-        }
-        public void SetRunLength (int value)
-        {
-            if (value >= 0)
-            _runLength = value;
-        }
-        private int _runLength;
+        public int ReleaseYear { get; set; } = 1900; //Auto property syntax
+       
+        //private int _releaseYear = 1900; //initialize this 
 
-        private int someValue; //only access is here
+        public int RunLength { get; set; }
+        
+        //private int _runLength; //no need to initalize this (initialize expression)
 
+        //private int someValue; //only access is here
         //void Foo()
         //{
         //    var x = RunLength;
@@ -62,5 +41,12 @@ namespace Itse1430.MovieLib
         //    var y = someValue; 
         //}
 
+        // showing mixed accessibility
+        public int Id { get; private set; }
+
+        public bool IsColor //calculated properties
+        {
+            get { return ReleaseYear > 1940;  }
+        }
     }
 }
