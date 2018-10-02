@@ -8,36 +8,28 @@ namespace CharacterCreator
 {
     public class Character
     {
-        public string GetName()
+        public string Name
         {
-            return _name ?? " ";
+            get { return _name ?? " "; }
+            set { _name = value; }
         }
-        public void SetName (string value)
-        {
-            _name = value;
-        }
-        private string _name;
+        private string _name = "";
 
-        public string GetProfession()
+        public string Profession
         {
-            return _profession ?? " ";
-        }
-        public void SetProfession(string value)
-        {
-            _profession = value;
+            get { return _profession ?? " "; }
+            set { _profession = value; }
         }
         private string _profession;
 
-        public string GetRace()
+        public string Race
         {
-            return _race ?? " ";
-        }
-        public void SetRace( string value )
-        {
-            _race = value;
+            get { return _race ?? " "; }
+            set { _race = value; }
         }
         private string _race;
 
+        public int Attributes { get; set; } = 1;
         public int GetAttributes()
         {
             return _attributes;
@@ -49,13 +41,10 @@ namespace CharacterCreator
         }
         private int _attributes;
 
-        public string GetDescription()
+        public string Description
         {
-            return _description ?? " ";
-        }
-        public void SetDescription (string value )
-        {
-            _description = value;
+            get { return _description ?? " "; }
+            set { _description = value; }
         }
         private string _description;
     }

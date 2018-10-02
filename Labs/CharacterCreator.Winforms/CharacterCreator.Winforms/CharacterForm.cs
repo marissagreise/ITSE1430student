@@ -28,22 +28,20 @@ namespace CharacterCreator.Winforms
         private void OnSave( object sender, EventArgs e )
         {
             var character = new Character();
-            var character2 = new Character();
-            var name = character2.GetName();
-
-            character.SetName (_txtName.Text);
-            if (String.IsNullOrEmpty(_txtName.Text))
+           
+            character.Name = _txtName.Text;
+            if (String.IsNullOrEmpty(character.Name))
                 return;
 
-            character.SetProfession(_comboProfession.Text);
+            character.Profession = _comboProfession.Text;
 
-            character.SetRace(_comboRace.Text);
+            character.Race = _comboRace.Text;
 
             character.SetAttributes (GetInt32(_txtAttributes));
             if (character.GetAttributes() < 0)
                 return;
 
-            character.SetDescription (_txtDescription.Text);
+            character.Description =_txtDescription.Text;
 
             Character = character;
             DialogResult = DialogResult.OK;
