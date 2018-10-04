@@ -16,7 +16,7 @@ namespace Itse1430.MovieLib.UI
         {
             InitializeComponent();
         }
-        public Movie Movie;
+        public Movie Movie { get; set; }
 
         private void OnCancel( object sender, EventArgs e )
         {
@@ -27,12 +27,9 @@ namespace Itse1430.MovieLib.UI
         private void OnSave( object sender, EventArgs e )
         {
             var movie = new Movie();
-            //var movie2 = new Movie();
-            //var name = movie2.GetName();
 
             //Name is required
             movie.Name = _txtName.Text; // writing to it
-            //movie.SetName(_txtName.Text);
             if (String.IsNullOrEmpty(movie.Name)) //reading to it
                 return;
 
@@ -41,15 +38,15 @@ namespace Itse1430.MovieLib.UI
 
             // Release year is numeric, if set
             movie.ReleaseYear = GetInt32(_txtReleaseYear);
-            //movie.SetReleaseYear(GetInt32(_txtReleaseYear));
             if (movie.ReleaseYear < 0)
                 return;
 
             //Run length, if set
             movie.RunLength = GetInt32(_txtRunLength);
-            //movie.SetRunLength(GetInt32(_txtRunLength));
             if (movie.RunLength < 0)
                 return;
+
+            movie.IsOwed = _chkOwned.Checked; // if checked it is true
 
             Movie = movie;
 
@@ -66,6 +63,18 @@ namespace Itse1430.MovieLib.UI
                 return value;
 
             return -1;
+        }
+
+        private void MovieForm_Load( object sender, EventArgs e )
+        {
+            if (Movie != null)
+            {
+                _txtName.Text = Movie.Name;
+                _txtDescription.Text = Movie.Description;
+                _txtReleaseYear.Text = Movie.ReleaseYear.ToString();
+                _txtRunLength.Text = Movie.RunLength.ToString();
+                _chkOwned.Checked = Movie.IsOwed;
+            }
         }
     }
 }

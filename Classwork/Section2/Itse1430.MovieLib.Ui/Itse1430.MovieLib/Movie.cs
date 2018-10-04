@@ -48,5 +48,7 @@ namespace Itse1430.MovieLib
         {
             get { return ReleaseYear > 1940;  }
         }
+
+        public bool IsOwed { get; set; }
     }
 }
