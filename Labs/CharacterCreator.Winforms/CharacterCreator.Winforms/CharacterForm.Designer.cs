@@ -33,7 +33,7 @@
             this._txtName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this._txtAttributes = new System.Windows.Forms.TextBox();
+            this._txtStrength = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this._txtDescription = new System.Windows.Forms.TextBox();
             this._buttonSave = new System.Windows.Forms.Button();
@@ -45,10 +45,10 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this._txtIntelligence = new System.Windows.Forms.TextBox();
+            this._txtAgility = new System.Windows.Forms.TextBox();
+            this._txtConstitution = new System.Windows.Forms.TextBox();
+            this._txtCharisma = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -94,13 +94,13 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Attributes (1-100)";
             // 
-            // _txtAttributes
+            // _txtStrength
             // 
-            this._txtAttributes.Location = new System.Drawing.Point(129, 199);
-            this._txtAttributes.Multiline = true;
-            this._txtAttributes.Name = "_txtAttributes";
-            this._txtAttributes.Size = new System.Drawing.Size(41, 20);
-            this._txtAttributes.TabIndex = 3;
+            this._txtStrength.Location = new System.Drawing.Point(129, 199);
+            this._txtStrength.Multiline = true;
+            this._txtStrength.Name = "_txtStrength";
+            this._txtStrength.Size = new System.Drawing.Size(41, 20);
+            this._txtStrength.TabIndex = 3;
             // 
             // label5
             // 
@@ -215,33 +215,33 @@
             this.label10.TabIndex = 13;
             this.label10.Text = "Charisma";
             // 
-            // textBox1
+            // _txtIntelligence
             // 
-            this.textBox1.Location = new System.Drawing.Point(190, 199);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(41, 20);
-            this.textBox1.TabIndex = 4;
+            this._txtIntelligence.Location = new System.Drawing.Point(201, 199);
+            this._txtIntelligence.Name = "_txtIntelligence";
+            this._txtIntelligence.Size = new System.Drawing.Size(41, 20);
+            this._txtIntelligence.TabIndex = 4;
             // 
-            // textBox2
+            // _txtAgility
             // 
-            this.textBox2.Location = new System.Drawing.Point(280, 199);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(41, 20);
-            this.textBox2.TabIndex = 5;
+            this._txtAgility.Location = new System.Drawing.Point(280, 199);
+            this._txtAgility.Name = "_txtAgility";
+            this._txtAgility.Size = new System.Drawing.Size(41, 20);
+            this._txtAgility.TabIndex = 5;
             // 
-            // textBox3
+            // _txtConstitution
             // 
-            this.textBox3.Location = new System.Drawing.Point(126, 255);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(41, 20);
-            this.textBox3.TabIndex = 6;
+            this._txtConstitution.Location = new System.Drawing.Point(126, 255);
+            this._txtConstitution.Name = "_txtConstitution";
+            this._txtConstitution.Size = new System.Drawing.Size(41, 20);
+            this._txtConstitution.TabIndex = 6;
             // 
-            // textBox4
+            // _txtCharisma
             // 
-            this.textBox4.Location = new System.Drawing.Point(201, 255);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(41, 20);
-            this.textBox4.TabIndex = 7;
+            this._txtCharisma.Location = new System.Drawing.Point(201, 255);
+            this._txtCharisma.Name = "_txtCharisma";
+            this._txtCharisma.Size = new System.Drawing.Size(41, 20);
+            this._txtCharisma.TabIndex = 7;
             // 
             // CharacterForm
             // 
@@ -249,10 +249,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(360, 471);
             this.ControlBox = false;
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this._txtCharisma);
+            this.Controls.Add(this._txtConstitution);
+            this.Controls.Add(this._txtAgility);
+            this.Controls.Add(this._txtIntelligence);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -264,7 +264,7 @@
             this.Controls.Add(this._buttonSave);
             this.Controls.Add(this._txtDescription);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this._txtAttributes);
+            this.Controls.Add(this._txtStrength);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this._txtName);
@@ -288,7 +288,7 @@
         private System.Windows.Forms.TextBox _txtName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox _txtAttributes;
+        private System.Windows.Forms.TextBox _txtStrength;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox _txtDescription;
         private System.Windows.Forms.Button _buttonSave;
@@ -300,9 +300,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox _txtIntelligence;
+        private System.Windows.Forms.TextBox _txtAgility;
+        private System.Windows.Forms.TextBox _txtConstitution;
+        private System.Windows.Forms.TextBox _txtCharisma;
     }
 }

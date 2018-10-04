@@ -32,16 +32,33 @@ namespace CharacterCreator.Winforms
                 "Help", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
-        private void OnCharacterNew( object sender, EventArgs e )
+        private void OnCharacterAdd( object sender, EventArgs e )
         {
             var form = new CharacterForm();
-
             if (form.ShowDialog(this) == DialogResult.Cancel)
                 return;
 
-            Character = form.Character;
+            _database.Add(form.Character);
+            RefreshCharacters();
+           
         }
 
         private Character Character;
+
+        private void MainForm_Load( object sender, EventArgs e )
+        {
+            _listCharacters.DisplayMember = "Name";
+
+        }
+
+        private void RefreshCharacters ()
+        {
+            var characters = _database.GetAll();
+
+            _listCharacters.Items.Clear();
+            _listCharacters.Items.AddRange(characters);
+        }
+
+        private CharacterDatabase _database = new CharacterDatabase();
     }
 }

@@ -17,7 +17,9 @@ namespace CharacterCreator.Winforms
             InitializeComponent();
         }
 
-        public Character Character;
+        public Character Character { get; set; }
+
+        
 
         private void OnCancel( object sender, EventArgs e )
         {
@@ -37,8 +39,24 @@ namespace CharacterCreator.Winforms
 
             character.Race = _comboRace.Text;
 
-            character.SetAttributes (GetInt32(_txtAttributes));
-            if (character.GetAttributes() < 0)
+            character.Strength = GetInt32(_txtStrength);
+            if (character.Strength < 0 && character.Strength > 100)
+                return;
+
+            character.Intelligence = GetInt32(_txtIntelligence);
+            if (character.Intelligence  < 0 && character.Intelligence > 100)
+                return;
+
+            character.Agility = GetInt32(_txtAgility);
+            if (character.Agility < 0 && character.Agility > 100)
+                return;
+
+            character.Constitution = GetInt32(_txtConstitution);
+            if (character.Constitution < 0 && character.Constitution > 100)
+                return;
+
+            character.Charisma = GetInt32(_txtCharisma);
+            if (character.Charisma < 0 && character.Charisma > 100)
                 return;
 
             character.Description =_txtDescription.Text;

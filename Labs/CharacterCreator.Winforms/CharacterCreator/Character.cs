@@ -29,17 +29,24 @@ namespace CharacterCreator
         }
         private string _race;
 
-        public int Attributes { get; set; } = 1;
-        public int GetAttributes()
-        {
-            return _attributes;
-        }
-        public void SetAttributes (int value)
-        {
-            if (value >= 1 && value <= 100)
-                _attributes = value;
-        }
-        private int _attributes;
+        public int Strength { get; set; }
+        public int Intelligence { get; set; }
+        public int Agility { get; set; }
+        public int Constitution { get; set; }
+        public int Charisma { get; set; }   
+
+
+        //public int Attributes { get; set; } = 1;
+        //public int GetAttributes()
+        //{
+        //    return _attributes;
+        //}
+        //public void SetAttributes (int value)
+        //{
+        //    if (value >= 1 && value <= 100)
+        //        _attributes = value;
+        //}
+        //private int _attributes;
 
         public string Description
         {
