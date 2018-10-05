@@ -101,6 +101,7 @@
             this._txtStrength.Name = "_txtStrength";
             this._txtStrength.Size = new System.Drawing.Size(41, 20);
             this._txtStrength.TabIndex = 3;
+            this._txtStrength.Text = "50";
             // 
             // label5
             // 
@@ -221,6 +222,7 @@
             this._txtIntelligence.Name = "_txtIntelligence";
             this._txtIntelligence.Size = new System.Drawing.Size(41, 20);
             this._txtIntelligence.TabIndex = 4;
+            this._txtIntelligence.Text = "50";
             // 
             // _txtAgility
             // 
@@ -228,6 +230,7 @@
             this._txtAgility.Name = "_txtAgility";
             this._txtAgility.Size = new System.Drawing.Size(41, 20);
             this._txtAgility.TabIndex = 5;
+            this._txtAgility.Text = "50";
             // 
             // _txtConstitution
             // 
@@ -235,6 +238,7 @@
             this._txtConstitution.Name = "_txtConstitution";
             this._txtConstitution.Size = new System.Drawing.Size(41, 20);
             this._txtConstitution.TabIndex = 6;
+            this._txtConstitution.Text = "50";
             // 
             // _txtCharisma
             // 
@@ -242,6 +246,7 @@
             this._txtCharisma.Name = "_txtCharisma";
             this._txtCharisma.Size = new System.Drawing.Size(41, 20);
             this._txtCharisma.TabIndex = 7;
+            this._txtCharisma.Text = "50";
             // 
             // CharacterForm
             // 
@@ -276,6 +281,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Create New Character";
+            this.Load += new System.EventHandler(this.CharacterForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

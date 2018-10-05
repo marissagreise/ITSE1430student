@@ -19,8 +19,6 @@ namespace CharacterCreator.Winforms
 
         public Character Character { get; set; }
 
-        
-
         private void OnCancel( object sender, EventArgs e )
         {
             DialogResult = DialogResult.Cancel;
@@ -76,5 +74,20 @@ namespace CharacterCreator.Winforms
             return -1;
         }
 
+        private void CharacterForm_Load( object sender, EventArgs e )
+        {
+            if (Character != null)
+            {
+                _txtName.Text = Character.Name;
+                _comboProfession.Text = Character.Profession;
+                _comboRace.Text = Character.Race;
+                _txtStrength.Text = Character.Strength.ToString();
+                _txtIntelligence.Text = Character.Intelligence.ToString();
+                _txtAgility.Text = Character.Agility.ToString();
+                _txtConstitution.Text = Character.Constitution.ToString();
+                _txtCharisma.Text = Character.Charisma.ToString();
+                _txtDescription.Text = Character.Description;
+            };
+        }
     }
 }

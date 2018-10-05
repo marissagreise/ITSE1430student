@@ -17,7 +17,7 @@ namespace CharacterCreator.Winforms
             InitializeComponent();
         }
 
-        private void exitToolStripMenuItem_Click( object sender, EventArgs e )
+        private void OnFileExit( object sender, EventArgs e )
         {
             if (MessageBox.Show("Are you sure you want to exit?",
                        "Close", MessageBoxButtons.YesNo) == DialogResult.No)
@@ -32,6 +32,13 @@ namespace CharacterCreator.Winforms
                 "Help", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
+        private void MainForm_Load( object sender, EventArgs e )
+        {
+            _listCharacters.DisplayMember = "Name";
+            RefreshCharacters();
+
+        }
+
         private void OnCharacterAdd( object sender, EventArgs e )
         {
             var form = new CharacterForm();
@@ -43,15 +50,43 @@ namespace CharacterCreator.Winforms
            
         }
 
-        private Character Character;
-
-        private void MainForm_Load( object sender, EventArgs e )
+        private void OnCharacterEdit( object sender, EventArgs e )
         {
-            _listCharacters.DisplayMember = "Name";
+            var item = GetSelectedCharacter();
+            if (item == null)
+                return;
+
+            var form = new CharacterForm();
+            form.Text = "Edit Character";
+            form.Character = item;
+            if (form.ShowDialog(this) == DialogResult.Cancel)
+                return;
+
+            _database.Edit(item.Name, form.Character);
+            RefreshCharacters();
 
         }
 
-        private void RefreshCharacters ()
+        private void OnCharacterDelete( object sender, EventArgs e )
+        {
+            var item = GetSelectedCharacter();
+            if (item == null)
+                return;
+
+            if (MessageBox.Show("Are you sure you want to Delete this Character?",
+                      "Delete Character", MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+
+            _database.Remove(item.Name);
+            RefreshCharacters();
+        }
+
+        private Character GetSelectedCharacter ()
+        {
+            return _listCharacters.SelectedItem as Character;
+        }
+
+        private void RefreshCharacters()
         {
             var characters = _database.GetAll();
 

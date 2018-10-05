@@ -35,19 +35,6 @@ namespace CharacterCreator
         public int Constitution { get; set; }
         public int Charisma { get; set; }   
 
-
-        //public int Attributes { get; set; } = 1;
-        //public int GetAttributes()
-        //{
-        //    return _attributes;
-        //}
-        //public void SetAttributes (int value)
-        //{
-        //    if (value >= 1 && value <= 100)
-        //        _attributes = value;
-        //}
-        //private int _attributes;
-
         public string Description
         {
             get { return _description ?? " "; }

@@ -35,6 +35,25 @@ namespace CharacterCreator
             return temp;
         }
 
+        public void Edit (string name, Character character)
+        {
+            Remove(name);
+
+            Add(character);
+        }
+
+        public void Remove (string name)
+        {
+            for (var index = 0; index < _characters.Length; ++ index)
+            {
+                if (String.Compare(name, _characters[index]?.Name, true) == 0 )
+                {
+                    _characters[index] = null;
+                    return;
+                };
+            }
+        }
+
         private int FindNextFreeIndex()
         {
             for (var index = 0; index < _characters.Length; ++index)
