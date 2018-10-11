@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using System.ComponentModel.DataAnnotations;
 
 namespace CharacterCreator
 {
@@ -30,7 +29,6 @@ namespace CharacterCreator
         }
         private string _race;
 
-        //[Range(1, 100, ErrorMessage = "Price must be between $1 and $100")]
         public int Strength { get; set; }
         public int Intelligence { get; set; }
         public int Agility { get; set; }
