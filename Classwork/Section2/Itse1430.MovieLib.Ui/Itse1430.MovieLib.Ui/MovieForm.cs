@@ -26,38 +26,27 @@ namespace Itse1430.MovieLib.UI
 
         private void OnSave( object sender, EventArgs e )
         {
+            if (!ValidateChildren())
+                return;
+
             var movie = new Movie();
 
-            //Name is required
             movie.Name = _txtName.Text; // writing to it
-            if (String.IsNullOrEmpty(movie.Name)) //reading to it
-                return;
-
-            //movie.SetDescription (_txtDescription.Text);
             movie.Description = _txtDescription.Text;
-
-            // Release year is numeric, if set
             movie.ReleaseYear = GetInt32(_txtReleaseYear);
-            if (movie.ReleaseYear < 0)
-                return;
-
-            //Run length, if set
             movie.RunLength = GetInt32(_txtRunLength);
-            if (movie.RunLength < 0)
-                return;
-
             movie.IsOwed = _chkOwned.Checked; // if checked it is true
 
             Movie = movie;
 
-            DialogResult = DialogResult.OK; 
+            DialogResult = DialogResult.OK;
             Close();
         }
 
-        private int GetInt32(TextBox textBox)
+        private int GetInt32( TextBox textBox )
         {
             if (String.IsNullOrEmpty(textBox.Text))
-                return 0;
+                return -1;
 
             if (Int32.TryParse(textBox.Text, out var value))
                 return value;
@@ -75,6 +64,44 @@ namespace Itse1430.MovieLib.UI
                 _txtRunLength.Text = Movie.RunLength.ToString();
                 _chkOwned.Checked = Movie.IsOwed;
             }
+
+            ValidateChildren();
+        }
+
+        private void OnValidateName( object sender, CancelEventArgs e )
+        {
+            var control = sender as TextBox;
+
+            if (String.IsNullOrEmpty(control.Text))
+            {
+                errorProvider1.SetError(control, "Name is Required");
+                e.Cancel = true;
+            } else
+                errorProvider1.SetError(control, "");
+        }
+
+        private void OnValidatingReleaseYear( object sender, CancelEventArgs e )
+        {
+            var control = sender as TextBox;
+            var result = GetInt32(control);
+            if (result < 1900)
+            {
+                errorProvider1.SetError(control, "Must be > 1900");
+                e.Cancel = true;
+            } else
+                errorProvider1.SetError(control, "");
+        }
+
+        private void OnValidatingRunLength( object sender, CancelEventArgs e )
+        {
+            var control = sender as TextBox;
+            var result = GetInt32(control);
+            if (result < 0)
+            {
+                errorProvider1.SetError(control, "Must be > 0");
+                e.Cancel = true;
+            } else
+                errorProvider1.SetError(control, "");
         }
     }
 }
