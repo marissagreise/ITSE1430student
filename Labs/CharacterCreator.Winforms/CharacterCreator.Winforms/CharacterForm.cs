@@ -50,7 +50,7 @@ namespace CharacterCreator.Winforms
         private int GetInt32 (TextBox textBox)
         {
             if (String.IsNullOrEmpty(textBox.Text))
-                return 0;
+                return -1;
             if (Int32.TryParse(textBox.Text, out var value))
                 return value;
 
@@ -71,6 +71,8 @@ namespace CharacterCreator.Winforms
                 _txtCharisma.Text = Character.Charisma.ToString();
                 _txtDescription.Text = Character.Description;
             };
+
+            ValidateChildren();
         }
 
         private void OnValidateName( object sender, CancelEventArgs e )
@@ -79,8 +81,10 @@ namespace CharacterCreator.Winforms
 
             if (String.IsNullOrEmpty(control.Text))
             {
+                _error.SetError(control, "Name is resquired");
                 e.Cancel = true;
             } else
+                _error.SetError(control, "");
 
         }
 
@@ -90,28 +94,59 @@ namespace CharacterCreator.Winforms
             var result = GetInt32(control);
             if (result < 0 && result > 100)
             {
+                _error.SetError(control, "Must be between 1-100");
                 e.Cancel = true;
-            }
+            } else
+                _error.SetError(control, "");
         }
 
         private void OnValidatingIntelligence( object sender, CancelEventArgs e )
         {
+            var control = sender as TextBox;
+            var result = GetInt32(control);
+            if (result < 0 && result > 100)
+            {
+                _error.SetError(control, "Must be between 1-100");
+                e.Cancel = true;
+            } else
+                _error.SetError(control, "");
 
         }
 
         private void OnValidatingAgility( object sender, CancelEventArgs e )
         {
-
+            var control = sender as TextBox;
+            var result = GetInt32(control);
+            if (result < 0 && result > 100)
+            {
+                _error.SetError(control, "Must be between 1-100");
+                e.Cancel = true;
+            } else
+                _error.SetError(control, "");
         }
 
         private void OnValidatingConstitution( object sender, CancelEventArgs e )
         {
-
+            var control = sender as TextBox;
+            var result = GetInt32(control);
+            if (result < 0 && result > 100)
+            {
+                _error.SetError(control, "Must be between 1-100");
+                e.Cancel = true;
+            } else
+                _error.SetError(control, "");
         }
 
         private void OnValidatingCharisma( object sender, CancelEventArgs e )
         {
-
+            var control = sender as TextBox;
+            var result = GetInt32(control);
+            if (result < 0 && result > 100)
+            {
+                _error.SetError(control, "Must be between 1-100");
+                e.Cancel = true;
+            } else
+                _error.SetError(control, "");
         }
     }
 }
