@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this._txtName = new System.Windows.Forms.TextBox();
@@ -49,10 +50,14 @@
             this._txtAgility = new System.Windows.Forms.TextBox();
             this._txtConstitution = new System.Windows.Forms.TextBox();
             this._txtCharisma = new System.Windows.Forms.TextBox();
+            this._error = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this._error)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(28, 25);
             this.label1.Name = "label1";
@@ -71,6 +76,8 @@
             // 
             // _txtName
             // 
+            this._txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this._txtName.Location = new System.Drawing.Point(126, 25);
             this._txtName.Name = "_txtName";
             this._txtName.Size = new System.Drawing.Size(143, 20);
@@ -87,6 +94,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(28, 179);
             this.label4.Name = "label4";
@@ -102,9 +110,11 @@
             this._txtStrength.Size = new System.Drawing.Size(41, 20);
             this._txtStrength.TabIndex = 3;
             this._txtStrength.Text = "50";
+            this._txtStrength.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingStrength);
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(28, 309);
             this.label5.Name = "label5";
@@ -122,6 +132,7 @@
             // 
             // _buttonSave
             // 
+            this._buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this._buttonSave.Location = new System.Drawing.Point(126, 426);
             this._buttonSave.Name = "_buttonSave";
             this._buttonSave.Size = new System.Drawing.Size(75, 23);
@@ -223,6 +234,7 @@
             this._txtIntelligence.Size = new System.Drawing.Size(41, 20);
             this._txtIntelligence.TabIndex = 4;
             this._txtIntelligence.Text = "50";
+            this._txtIntelligence.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingIntelligence);
             // 
             // _txtAgility
             // 
@@ -231,6 +243,7 @@
             this._txtAgility.Size = new System.Drawing.Size(41, 20);
             this._txtAgility.TabIndex = 5;
             this._txtAgility.Text = "50";
+            this._txtAgility.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingAgility);
             // 
             // _txtConstitution
             // 
@@ -239,6 +252,7 @@
             this._txtConstitution.Size = new System.Drawing.Size(41, 20);
             this._txtConstitution.TabIndex = 6;
             this._txtConstitution.Text = "50";
+            this._txtConstitution.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingConstitution);
             // 
             // _txtCharisma
             // 
@@ -247,11 +261,17 @@
             this._txtCharisma.Size = new System.Drawing.Size(41, 20);
             this._txtCharisma.TabIndex = 7;
             this._txtCharisma.Text = "50";
+            this._txtCharisma.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingCharisma);
+            // 
+            // _error
+            // 
+            this._error.ContainerControl = this;
             // 
             // CharacterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(360, 471);
             this.ControlBox = false;
             this.Controls.Add(this._txtCharisma);
@@ -282,6 +302,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Create New Character";
             this.Load += new System.EventHandler(this.CharacterForm_Load);
+            this.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateName);
+            ((System.ComponentModel.ISupportInitialize)(this._error)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -310,5 +332,6 @@
         private System.Windows.Forms.TextBox _txtAgility;
         private System.Windows.Forms.TextBox _txtConstitution;
         private System.Windows.Forms.TextBox _txtCharisma;
+        private System.Windows.Forms.ErrorProvider _error;
     }
 }

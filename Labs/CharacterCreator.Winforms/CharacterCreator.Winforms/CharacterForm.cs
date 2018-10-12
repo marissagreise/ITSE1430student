@@ -27,36 +27,19 @@ namespace CharacterCreator.Winforms
 
         private void OnSave( object sender, EventArgs e )
         {
+            if (!ValidateChildren())
+                return;
+
             var character = new Character();
            
             character.Name = _txtName.Text;
-            if (String.IsNullOrEmpty(character.Name))
-                return;
-
             character.Profession = _comboProfession.Text;
-
             character.Race = _comboRace.Text;
-
             character.Strength = GetInt32(_txtStrength);
-            if (character.Strength < 0 && character.Strength > 100)
-                return;
-
             character.Intelligence = GetInt32(_txtIntelligence);
-            if (character.Intelligence  < 0 && character.Intelligence > 100)
-                return;
-
             character.Agility = GetInt32(_txtAgility);
-            if (character.Agility < 0 && character.Agility > 100)
-                return;
-
             character.Constitution = GetInt32(_txtConstitution);
-            if (character.Constitution < 0 && character.Constitution > 100)
-                return;
-
             character.Charisma = GetInt32(_txtCharisma);
-            if (character.Charisma < 0 && character.Charisma > 100)
-                return;
-
             character.Description =_txtDescription.Text;
 
             Character = character;
@@ -88,6 +71,47 @@ namespace CharacterCreator.Winforms
                 _txtCharisma.Text = Character.Charisma.ToString();
                 _txtDescription.Text = Character.Description;
             };
+        }
+
+        private void OnValidateName( object sender, CancelEventArgs e )
+        {
+            var control = sender as TextBox;
+
+            if (String.IsNullOrEmpty(control.Text))
+            {
+                e.Cancel = true;
+            } else
+
+        }
+
+        private void OnValidatingStrength( object sender, CancelEventArgs e )
+        {
+            var control = sender as TextBox;
+            var result = GetInt32(control);
+            if (result < 0 && result > 100)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void OnValidatingIntelligence( object sender, CancelEventArgs e )
+        {
+
+        }
+
+        private void OnValidatingAgility( object sender, CancelEventArgs e )
+        {
+
+        }
+
+        private void OnValidatingConstitution( object sender, CancelEventArgs e )
+        {
+
+        }
+
+        private void OnValidatingCharisma( object sender, CancelEventArgs e )
+        {
+
         }
     }
 }
