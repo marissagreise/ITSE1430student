@@ -73,7 +73,7 @@ namespace CharacterCreator.Winforms
             if (item == null)
                 return;
 
-            if (MessageBox.Show("Are you sure you want to Delete this Character?",
+            if (MessageBox.Show("Are you sure you want to Delete this Character?" ,
                       "Delete Character", MessageBoxButtons.YesNo) == DialogResult.No)
                 return;
 

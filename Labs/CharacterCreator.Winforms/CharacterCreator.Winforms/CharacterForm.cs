@@ -107,7 +107,7 @@ namespace CharacterCreator.Winforms
         {
             var control = sender as TextBox;
             var result = GetInt32(control);
-            if (result < 0 && result > 100)
+            if (result < 0)
             {
                 _error.SetError(control, "Must be between 1-100");
                 e.Cancel = true;
@@ -120,7 +120,7 @@ namespace CharacterCreator.Winforms
         {
             var control = sender as TextBox;
             var result = GetInt32(control);
-            if (result < 0 && result > 100)
+            if (result < 0)
             {
                 _error.SetError(control, "Must be between 1-100");
                 e.Cancel = true;
@@ -132,7 +132,7 @@ namespace CharacterCreator.Winforms
         {
             var control = sender as TextBox;
             var result = GetInt32(control);
-            if (result < 0 && result > 100)
+            if (result < 0)
             {
                 _error.SetError(control, "Must be between 1-100");
                 e.Cancel = true;
@@ -144,7 +144,7 @@ namespace CharacterCreator.Winforms
         {
             var control = sender as TextBox;
             var result = GetInt32(control);
-            if (result < 0 && result > 100)
+            if (result < 0)
             {
                 _error.SetError(control, "Must be between 1-100");
                 e.Cancel = true;

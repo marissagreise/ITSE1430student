@@ -68,7 +68,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(46, 77);
+            this.label2.Location = new System.Drawing.Point(48, 77);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 2;
@@ -87,7 +87,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(69, 116);
+            this.label3.Location = new System.Drawing.Point(71, 116);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(33, 13);
             this.label3.TabIndex = 4;
@@ -97,7 +97,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 160);
+            this.label4.Location = new System.Drawing.Point(17, 183);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(87, 13);
             this.label4.TabIndex = 6;
@@ -117,7 +117,7 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(42, 280);
+            this.label5.Location = new System.Drawing.Point(44, 303);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(60, 13);
             this.label5.TabIndex = 8;
@@ -134,7 +134,7 @@
             // _buttonSave
             // 
             this._buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this._buttonSave.Location = new System.Drawing.Point(155, 413);
+            this._buttonSave.Location = new System.Drawing.Point(192, 436);
             this._buttonSave.Name = "_buttonSave";
             this._buttonSave.Size = new System.Drawing.Size(75, 23);
             this._buttonSave.TabIndex = 9;
@@ -145,7 +145,7 @@
             // _buttonCancel
             // 
             this._buttonCancel.CausesValidation = false;
-            this._buttonCancel.Location = new System.Drawing.Point(236, 436);
+            this._buttonCancel.Location = new System.Drawing.Point(273, 436);
             this._buttonCancel.Name = "_buttonCancel";
             this._buttonCancel.Size = new System.Drawing.Size(75, 23);
             this._buttonCancel.TabIndex = 10;
@@ -187,7 +187,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(108, 183);
+            this.label6.Location = new System.Drawing.Point(110, 183);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 13);
             this.label6.TabIndex = 9;
