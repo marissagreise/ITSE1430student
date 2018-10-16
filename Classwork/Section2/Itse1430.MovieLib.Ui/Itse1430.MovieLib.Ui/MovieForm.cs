@@ -29,16 +29,24 @@ namespace Itse1430.MovieLib.UI
             if (!ValidateChildren())
                 return;
 
-            var movie = new Movie();
+            //var movie = new Movie();
 
-            movie.Name = _txtName.Text; // writing to it
-            movie.Description = _txtDescription.Text;
-            movie.ReleaseYear = GetInt32(_txtReleaseYear);
-            movie.RunLength = GetInt32(_txtRunLength);
-            movie.IsOwed = _chkOwned.Checked; // if checked it is true
+            //movie.Name = _txtName.Text; // writing to it
+            //movie.Description = _txtDescription.Text;
+            //movie.ReleaseYear = GetInt32(_txtReleaseYear);
+            //movie.RunLength = GetInt32(_txtRunLength);
+            //movie.IsOwed = _chkOwned.Checked; // if checked it is true
 
+            // Initializer syntax
+            var movie = new Movie() { 
+                Name = _txtName.Text, // writing to it
+                Description = _txtDescription.Text,
+                ReleaseYear = GetInt32(_txtReleaseYear),
+                RunLength = GetInt32(_txtRunLength),
+                IsOwed = _chkOwned.Checked, // if checked it is true
+            };
+            
             Movie = movie;
-
             DialogResult = DialogResult.OK;
             Close();
         }
