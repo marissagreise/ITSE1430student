@@ -59,6 +59,9 @@ namespace CharacterCreator.Winforms
 
         private void CharacterForm_Load( object sender, EventArgs e )
         {
+            _comboProfession.SelectedIndex = 0;
+            _comboRace.SelectedIndex = 0;
+
             if (Character != null)
             {
                 _txtName.Text = Character.Name;
