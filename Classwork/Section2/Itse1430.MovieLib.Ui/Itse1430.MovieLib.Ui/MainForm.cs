@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Itse1430.MovieLib.Memory;
 
 namespace Itse1430.MovieLib.UI
 {
@@ -18,16 +19,20 @@ namespace Itse1430.MovieLib.UI
         }
 
         // this method can be overriden in a derived type
-        protected virtual void SomeFunction()
-        {
+        //protected virtual void SomeFunction()
+        //{
 
-        }
+        //}
 
         //This method MUST BE defined in a derived type
         //protected abstract void SomeAbstractFunction();
         protected override void OnLoad( EventArgs e )
         {
             base.OnLoad(e);
+
+            //Seed database
+            
+            SeedDatabase.Seed(_database);
 
             _listMovies.DisplayMember = "Name";
             RefreshMovies();
@@ -60,7 +65,7 @@ namespace Itse1430.MovieLib.UI
             RefreshMovies();
         }
 
-        private MovieDatabase _database = new MovieDatabase();
+        private MovieDatabase _database = new MemoryMovieDatabase();
 
         private void RefreshMovies()
         {
