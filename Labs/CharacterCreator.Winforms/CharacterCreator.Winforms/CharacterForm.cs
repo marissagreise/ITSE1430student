@@ -96,11 +96,11 @@ namespace CharacterCreator.Winforms
 
         }
 
-        private void OnValidatingStrength( object sender, CancelEventArgs e )
+        private void OnValidatingAttributes( object sender, CancelEventArgs e )
         {
             var control = sender as TextBox;
             var result = GetInt32(control);
-            if (result < 0)
+            if (result < 0 || result > 100)
             {
                 _error.SetError(control, "Must be between 1-100");
                 e.Cancel = true;
@@ -108,53 +108,5 @@ namespace CharacterCreator.Winforms
                 _error.SetError(control, "");
         }
 
-        private void OnValidatingIntelligence( object sender, CancelEventArgs e )
-        {
-            var control = sender as TextBox;
-            var result = GetInt32(control);
-            if (result < 0)
-            {
-                _error.SetError(control, "Must be between 1-100");
-                e.Cancel = true;
-            } else
-                _error.SetError(control, "");
-
-        }
-
-        private void OnValidatingAgility( object sender, CancelEventArgs e )
-        {
-            var control = sender as TextBox;
-            var result = GetInt32(control);
-            if (result < 0)
-            {
-                _error.SetError(control, "Must be between 1-100");
-                e.Cancel = true;
-            } else
-                _error.SetError(control, "");
-        }
-
-        private void OnValidatingConstitution( object sender, CancelEventArgs e )
-        {
-            var control = sender as TextBox;
-            var result = GetInt32(control);
-            if (result < 0)
-            {
-                _error.SetError(control, "Must be between 1-100");
-                e.Cancel = true;
-            } else
-                _error.SetError(control, "");
-        }
-
-        private void OnValidatingCharisma( object sender, CancelEventArgs e )
-        {
-            var control = sender as TextBox;
-            var result = GetInt32(control);
-            if (result < 0)
-            {
-                _error.SetError(control, "Must be between 1-100");
-                e.Cancel = true;
-            } else
-                _error.SetError(control, "");
-        }
     }
 }

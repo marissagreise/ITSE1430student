@@ -111,7 +111,7 @@
             this._txtStrength.Size = new System.Drawing.Size(41, 20);
             this._txtStrength.TabIndex = 3;
             this._txtStrength.Text = "50";
-            this._txtStrength.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingStrength);
+            this._txtStrength.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingAttributes);
             // 
             // label5
             // 
@@ -236,7 +236,7 @@
             this._txtIntelligence.Size = new System.Drawing.Size(41, 20);
             this._txtIntelligence.TabIndex = 4;
             this._txtIntelligence.Text = "50";
-            this._txtIntelligence.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingIntelligence);
+            this._txtIntelligence.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingAttributes);
             // 
             // _txtAgility
             // 
@@ -245,7 +245,7 @@
             this._txtAgility.Size = new System.Drawing.Size(41, 20);
             this._txtAgility.TabIndex = 5;
             this._txtAgility.Text = "50";
-            this._txtAgility.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingAgility);
+            this._txtAgility.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingAttributes);
             // 
             // _txtConstitution
             // 
@@ -254,7 +254,7 @@
             this._txtConstitution.Size = new System.Drawing.Size(41, 20);
             this._txtConstitution.TabIndex = 6;
             this._txtConstitution.Text = "50";
-            this._txtConstitution.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingConstitution);
+            this._txtConstitution.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingAttributes);
             // 
             // _txtCharisma
             // 
@@ -263,7 +263,7 @@
             this._txtCharisma.Size = new System.Drawing.Size(41, 20);
             this._txtCharisma.TabIndex = 7;
             this._txtCharisma.Text = "50";
-            this._txtCharisma.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingCharisma);
+            this._txtCharisma.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingAttributes);
             // 
             // _error
             // 
