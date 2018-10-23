@@ -19,12 +19,12 @@ namespace Itse1430.MovieLib
 
         protected abstract void AddCore ( Movie movie );
 
-        public Movie[] GetAll()
+        public IEnumerable<Movie> GetAll()
         {
             return GetAllCore();
         }
 
-        protected abstract Movie[] GetAllCore();
+        protected abstract IEnumerable<Movie> GetAllCore();
 
         public void Edit (string name, Movie movie)
         {

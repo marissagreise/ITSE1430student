@@ -13,18 +13,10 @@ namespace Itse1430.MovieLib.Memory
             _items.Add(movie);
         }
 
-        protected override Movie[] GetAllCore()
+        protected override IEnumerable<Movie> GetAllCore()
         {
-            // how many movies do we have
-            var count = _items.Count;
-
-            var temp = new Movie[count];
-            var index = 0;
-            foreach (var movie in _items)
-            {
-                temp[index++] = movie;
-            }
-            return temp;
+            return _items;
+           
         }
 
         protected override void EditCore ( Movie oldMovie, Movie newMovie )

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -45,6 +46,14 @@ namespace Itse1430.MovieLib.UI
                 RunLength = GetInt32(_txtRunLength),
                 IsOwed = _chkOwned.Checked, // if checked it is true
             };
+
+            var results = ObjectValidator.Validate(movie);
+            foreach (var result in results)
+            {
+                MessageBox.Show(this, result.ErrorMessage, "Validation Failed",
+                               MessageBoxButtons.OK);
+                return;
+            }
             
             Movie = movie;
             DialogResult = DialogResult.OK;
