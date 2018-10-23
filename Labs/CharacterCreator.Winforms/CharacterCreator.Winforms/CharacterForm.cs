@@ -89,7 +89,7 @@ namespace CharacterCreator.Winforms
 
             if (String.IsNullOrEmpty(control.Text))
             {
-                _error.SetError(control, "Name is resquired");
+                _error.SetError(control, "Name is required");
                 e.Cancel = true;
             } else
                 _error.SetError(control, "");
