@@ -31,8 +31,7 @@ namespace Itse1430.MovieLib.UI
             base.OnLoad(e);
 
             //Seed database
-            
-            SeedDatabase.Seed(_database);
+            _database.Seed();
 
             _listMovies.DisplayMember = "Name";
             RefreshMovies();
@@ -65,7 +64,6 @@ namespace Itse1430.MovieLib.UI
             RefreshMovies();
         }
 
-        private MovieDatabase _database = new MemoryMovieDatabase();
 
         private void RefreshMovies()
         {
@@ -74,8 +72,9 @@ namespace Itse1430.MovieLib.UI
             _listMovies.Items.Clear();
 
             //TODO: Hard way
-            foreach (var movie in movies)
-                _listMovies.Items.Add(movie);
+            //foreach (var movie in movies)
+            //    _listMovies.Items.Add(movie);
+            _listMovies.Items.AddRange(movies.ToArray());
         }
 
         private void EditMovie()
@@ -130,6 +129,7 @@ namespace Itse1430.MovieLib.UI
         {
             return _listMovies.SelectedItem as Movie;       // using the as operator
         }
+        private IMovieDatabase _database = new MemoryMovieDatabase();
 
     }
 }

@@ -15,8 +15,7 @@ namespace Itse1430.MovieLib.Memory
 
         protected override IEnumerable<Movie> GetAllCore()
         {
-            return _items;
-           
+            return _items.Select(Clone);            
         }
 
         protected override void EditCore ( Movie oldMovie, Movie newMovie )
@@ -34,15 +33,29 @@ namespace Itse1430.MovieLib.Memory
         }
         protected override Movie FindByName (string name)
         {
-            foreach (var movie in _items)
-            {
-                if (String.Compare(name, movie.Name, true) == 0)
-                    return movie;
-            };
-
-            return null;
+            return _items.FirstOrDefault(IsName);
         }
-        
+
+        private Movie Clone( Movie item )
+        {
+            return new Movie()
+            {
+                Name = item.Name,
+                Description = item.Description,
+                ReleaseYear = item.ReleaseYear,
+                RunLength = item.RunLength,
+                IsOwned = item.IsOwned
+            };
+        }
+
+        private bool IsName (Movie movie)
+        {
+            if (String.Compare(name, movie.Name, true) == 0)
+                return true;
+
+            return false;
+        }
+
         private List<Movie> _items = new List<Movie>();
     }
 }

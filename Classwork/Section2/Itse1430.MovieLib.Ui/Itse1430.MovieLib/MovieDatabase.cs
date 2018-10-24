@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Itse1430.MovieLib
 {
-    public  abstract class MovieDatabase
+    public  abstract class MovieDatabase : IMovieDatabase
     { 
         public void Add (Movie movie)
         {
