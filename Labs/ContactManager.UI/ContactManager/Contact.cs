@@ -8,5 +8,6 @@ namespace ContactManager
 {
     class Contact
     {
+
     }
 }
