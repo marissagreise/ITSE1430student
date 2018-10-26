@@ -8,7 +8,6 @@ namespace ContactManager
 {
     public class Contact 
     {
-
         public string Name
         {
             get { return _name ?? ""; }  
@@ -16,7 +15,6 @@ namespace ContactManager
         }
 
         private string _name = "";
-
 
     }
 }
