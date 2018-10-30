@@ -16,5 +16,12 @@ namespace ContactManager
 
         private string _name = "";
 
+        
+
+    }
+    public interface IMessageService
+    {
+        /// <summary>Sends a message.</summary>
+        void Send( string emailAddress, string subject, string message );
     }
 }
