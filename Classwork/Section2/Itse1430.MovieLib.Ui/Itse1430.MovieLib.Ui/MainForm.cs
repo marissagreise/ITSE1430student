@@ -67,7 +67,11 @@ namespace Itse1430.MovieLib.UI
 
         private void RefreshMovies()
         {
-            var movies = _database.GetAll();
+            //Orderby
+            //var movies = _database.GetAll();
+            var movies = from m in _database.GetAll()
+                         orderby m.Name
+                         select m;
 
             _listMovies.Items.Clear();
 
