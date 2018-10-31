@@ -10,9 +10,11 @@ namespace Itse1430.MovieLib
     { 
         public void Add (Movie movie)
         {
-            //todo: validate
             if (movie == null)
-                return;
+                throw new ArgumentNullException("movie");
+            ObjectValidator.Validate(movie);
+            
+            //todo: validate
 
             AddCore(movie);
         }
@@ -28,16 +30,20 @@ namespace Itse1430.MovieLib
 
         public void Edit (string name, Movie movie)
         {
-            // todo: validate
-            if (String.IsNullOrEmpty(name))
-                return;
+            // Validate
+            if (name == null)
+                throw new ArgumentNullException(nameof(name));
+            else if (name == "")
+                throw new ArgumentException("Name cannot be empty.", nameof(name));  
             if (movie == null)
-                return;
+                throw new ArgumentNullException(nameof(movie));
+            ObjectValidator.Validate(movie);
 
             // Find movie by name
             var existing = FindByName(name);
             if (existing == null)
-                return;
+                throw new Exception("Movie not found.");
+
             EditCore(existing, movie);
         }
 

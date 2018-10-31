@@ -30,6 +30,7 @@ namespace Itse1430.MovieLib.UI
         {
             base.OnLoad(e);
 
+            _database.Add(new Movie());
             //Seed database
             _database.Seed();
 

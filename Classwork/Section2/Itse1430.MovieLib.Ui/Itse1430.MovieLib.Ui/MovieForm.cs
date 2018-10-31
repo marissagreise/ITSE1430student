@@ -47,7 +47,7 @@ namespace Itse1430.MovieLib.UI
                 IsOwned = _chkOwned.Checked, // if checked it is true
             };
 
-            var results = ObjectValidator.Validate(movie);
+            var results = ObjectValidator.TryValidate(movie);
             foreach (var result in results)
             {
                 MessageBox.Show(this, result.ErrorMessage, "Validation Failed",
