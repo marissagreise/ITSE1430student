@@ -98,5 +98,33 @@ namespace ContactManager.UI
 
         private IContactDatabase _database = new MemoryContactDatabase();
 
+        private void OnContactDelete( object sender, EventArgs e )
+        {
+            DeleteContact();
+        }
+
+        private void DeleteContact()
+        {
+            //Get selected movie, if any
+            var item = GetSelectedContact();
+            if (item == null)
+                return;
+
+            if (MessageBox.Show("Are you sure you want to Delete this Contact?",
+                     "Delete Contact", MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+
+            //Remove from database and refresh
+            _database.Remove(item.Name);
+            RefreshContacts();
+        }
+
+        private void OnListKeyUp( object sender, KeyEventArgs e )
+        {
+            if (e.KeyData == Keys.Delete)
+            {
+                DeleteContact();
+            };
+        }
     }
 }
