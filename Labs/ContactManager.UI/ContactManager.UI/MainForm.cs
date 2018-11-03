@@ -18,6 +18,14 @@ namespace ContactManager.UI
             InitializeComponent();
         }
 
+        protected override void OnLoad( EventArgs e )
+        {
+            base.OnLoad(e);
+
+            _listBoxContacts.DisplayMember = "Name";
+            RefreshContacts();
+        }
+
         private void OnFileExit( object sender, EventArgs e )
         {
             if (MessageBox.Show("Are you sure you want to exit?",
@@ -53,6 +61,42 @@ namespace ContactManager.UI
             
             _listBoxContacts.Items.AddRange(movies.ToArray());
         }
+
+        private void OnContactEdit( object sender, EventArgs e )
+        {
+            EditContact();
+        }
+
+        private void EditContact()
+        {
+            //Get selected contact, if any
+            var item = GetSelectedContact();
+            if (item == null)
+                return;
+
+            //Show form with selected contact
+            var form = new ContactForm();
+            form.Text = "Edit Contact";
+            form.Contact = item;
+            if (form.ShowDialog(this) == DialogResult.Cancel)
+                return;
+
+            //Update database and refresh
+            _database.Edit(item.Name, form.Contact);
+            RefreshContacts();
+        }
+
+        private Contact GetSelectedContact()
+        {
+            return _listBoxContacts.SelectedItem as Contact;
+        }
+
+        private void OnContactDoubleClick( object sender, EventArgs e )
+        {
+            EditContact();
+        }
+
         private IContactDatabase _database = new MemoryContactDatabase();
+
     }
 }
