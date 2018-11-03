@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ContactManager
 {
-    public class Contact
+    public class Contact : IValidatableObject
     {
         public string Name
         {

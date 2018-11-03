@@ -42,7 +42,7 @@ namespace ContactManager.UI
             RefreshContacts();
         }
 
-        private void RefreshMovies()
+        private void RefreshContacts()
         {
             var movies = from m in _database.GetAll()
                          orderby m.Name
@@ -52,5 +52,6 @@ namespace ContactManager.UI
             
             _listMovies.Items.AddRange(movies.ToArray());
         }
+        //private IMovieDatabase _database = new MemoryMovieDatabase();
     }
 }
