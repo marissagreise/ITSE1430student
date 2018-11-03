@@ -31,5 +31,26 @@ namespace ContactManager.UI
             MessageBox.Show(this, "Marissa Greise\nITSE 1430\nContact Manager",
                "Help", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
+
+        private void OnContactAdd( object sender, EventArgs e )
+        {
+            var form = new ContactForm();
+            if (form.ShowDialog(this) == DialogResult.Cancel)
+                return;
+
+            _database.Add(form.Contact);
+            RefreshContacts();
+        }
+
+        private void RefreshMovies()
+        {
+            var movies = from m in _database.GetAll()
+                         orderby m.Name
+                         select m;
+
+            _listMovies.Items.Clear();
+            
+            _listMovies.Items.AddRange(movies.ToArray());
+        }
     }
 }
