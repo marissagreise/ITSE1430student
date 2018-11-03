@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ContactManager.Memory;
 
 namespace ContactManager.UI
 {
@@ -48,10 +49,10 @@ namespace ContactManager.UI
                          orderby m.Name
                          select m;
 
-            _listMovies.Items.Clear();
+            _listBoxContacts.Items.Clear();
             
-            _listMovies.Items.AddRange(movies.ToArray());
+            _listBoxContacts.Items.AddRange(movies.ToArray());
         }
-        //private IMovieDatabase _database = new MemoryMovieDatabase();
+        private IContactDatabase _database = new MemoryContactDatabase();
     }
 }

@@ -31,9 +31,8 @@ namespace ContactManager
                                 new[] { nameof(Name) });
 
             if (String.IsNullOrEmpty(EmailAddress))
-                yield return new ValidationResult("Name is required.",
+                yield return new ValidationResult("Email Address is required.",
                                 new[] { nameof(EmailAddress) });
-
         }
     }
 }

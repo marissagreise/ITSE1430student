@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -89,6 +90,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ContactManager.Memory\ContactManager.Memory.csproj">
+      <Project>{8c0f5003-e07c-4ffb-ad6d-cf0dbd1cebcf}</Project>
+      <Name>ContactManager.Memory</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ContactManager\ContactManager.csproj">
       <Project>{bb189366-f993-4636-a272-f8784f80090f}</Project>
       <Name>ContactManager</Name>

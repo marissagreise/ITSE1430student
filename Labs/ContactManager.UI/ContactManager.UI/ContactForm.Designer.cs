@@ -101,6 +101,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "ContactForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Contact Information";
             this.Load += new System.EventHandler(this.ContactForm_Load);
             this.ResumeLayout(false);
