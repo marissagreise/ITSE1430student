@@ -1,4 +1,8 @@
-﻿using System;
+﻿/* Marissa Greise
+ * ITSE 1430
+ * 11/01/2018
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
