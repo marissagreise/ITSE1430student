@@ -21,8 +21,6 @@ namespace Itse1430.MovieLib
         }
         public static void Validate( IValidatableObject value )
         {
-            var results = new List<ValidationResult>();
-
             var context = new ValidationContext(value);
 
             Validator.ValidateObject(value, context, true);

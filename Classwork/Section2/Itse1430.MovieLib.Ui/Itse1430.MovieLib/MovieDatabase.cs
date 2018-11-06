@@ -10,13 +10,19 @@ namespace Itse1430.MovieLib
     { 
         public void Add (Movie movie)
         {
+            //todo: validate
             if (movie == null)
                 throw new ArgumentNullException("movie");
             ObjectValidator.Validate(movie);
-            
-            //todo: validate
 
-            AddCore(movie);
+            //if (movie == null) return;
+            try
+            {
+                AddCore(movie);
+            } catch (Exception e)
+            {
+                throw new Exception("Add failed", e);
+            };
         }
 
         protected abstract void AddCore ( Movie movie );

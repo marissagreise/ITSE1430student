@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Itse1430.MovieLib.Memory;
+using Itse1430.MovieLib.Sql;
 
 namespace Itse1430.MovieLib.UI
 {
@@ -29,10 +30,6 @@ namespace Itse1430.MovieLib.UI
         protected override void OnLoad( EventArgs e )
         {
             base.OnLoad(e);
-
-            _database.Add(new Movie());
-            //Seed database
-            _database.Seed();
 
             _listMovies.DisplayMember = "Name";
             RefreshMovies();
@@ -59,8 +56,18 @@ namespace Itse1430.MovieLib.UI
             if (form.ShowDialog(this) == DialogResult.Cancel)
                 return;
 
+            //Add to database and refresh
+            try
+            {
+                _database.Add(form.Movie);
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+            };
+
             //MessageBox.Show("Adding movie");
-            _database.Add(form.Movie);                  // this is how to get data from different member
+           // _database.Add(form.Movie);                  // this is how to get data from different member
             //Movie.Name = " ";
             RefreshMovies();
         }
@@ -69,7 +76,6 @@ namespace Itse1430.MovieLib.UI
         private void RefreshMovies()
         {
             //Orderby
-            //var movies = _database.GetAll();
             var movies = from m in _database.GetAll()
                          orderby m.Name
                          select m;
@@ -93,19 +99,29 @@ namespace Itse1430.MovieLib.UI
             if (form.ShowDialog(this) == DialogResult.Cancel)
                 return;
 
-            // add to database and refresh
-            _database.Edit(item.Name, form.Movie);                  // this is how to get data from different member
+            try
+            {
+                _database.Edit(item.Name, form.Movie);
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            };
+
+            // add to database and refresh              // this is how to get data from different member
             RefreshMovies();
         }
 
         private void OnMovieDelete( object sender, EventArgs e )
         {
             DeleteMovie();
+
+
         }
 
         private void OnMovieEdit( object sender, EventArgs e )
         {
-            EditMovie();
+                EditMovie();
+           
         }
 
         private void OnMovieDoubleClick( object sender, EventArgs e )
@@ -127,14 +143,20 @@ namespace Itse1430.MovieLib.UI
             if (item == null)
                 return;
 
-            _database.Remove(item.Name);
+            try
+            {
+                _database.Remove(item.Name);
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            };
+            
             RefreshMovies();
         }
         private Movie GetSelectedMovie()
         {
             return _listMovies.SelectedItem as Movie;       // using the as operator
         }
-        private IMovieDatabase _database = new MemoryMovieDatabase();
-
+        private IMovieDatabase _database = new SqlMovieDatabase();
     }
 }
