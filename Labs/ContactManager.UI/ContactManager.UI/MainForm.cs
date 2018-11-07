@@ -100,6 +100,7 @@ namespace ContactManager.UI
             EditContact();
         }
 
+        private IMessageServices _sentMessages = new MemoryMessageDatabase();
         private IContactDatabase _database = new MemoryContactDatabase();
 
         private void OnContactDelete( object sender, EventArgs e )
@@ -109,16 +110,14 @@ namespace ContactManager.UI
 
         private void DeleteContact()
         {
-            //Get selected movie, if any
             var item = GetSelectedContact();
             if (item == null)
                 return;
 
-            if (MessageBox.Show("Are you sure you want to Delete this Contact?",
+            if (MessageBox.Show("Are you sure you want to Delete " + item.Name + " ?",
                      "Delete Contact", MessageBoxButtons.YesNo) == DialogResult.No)
                 return;
-
-            //Remove from database and refresh
+            
             _database.Remove(item.Name);
             RefreshContacts();
         }
@@ -129,6 +128,11 @@ namespace ContactManager.UI
             {
                 DeleteContact();
             };
+        }
+
+        private void sendToolStripMenuItem_Click( object sender, EventArgs e )
+        {
+
         }
     }
 }

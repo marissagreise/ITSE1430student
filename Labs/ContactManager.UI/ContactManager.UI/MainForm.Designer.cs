@@ -40,9 +40,12 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this._listBoxContacts = new System.Windows.Forms.ListBox();
+            this._listBoxSentMessages = new System.Windows.Forms.ListBox();
+            this.sendToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -111,6 +114,8 @@
             // 
             // messageToolStripMenuItem
             // 
+            this.messageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sendToolStripMenuItem});
             this.messageToolStripMenuItem.Name = "messageToolStripMenuItem";
             this.messageToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.messageToolStripMenuItem.Text = "Message";
@@ -140,6 +145,10 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this._listBoxContacts);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this._listBoxSentMessages);
             this.splitContainer1.Size = new System.Drawing.Size(390, 418);
             this.splitContainer1.SplitterDistance = 130;
             this.splitContainer1.TabIndex = 1;
@@ -153,6 +162,21 @@
             this._listBoxContacts.TabIndex = 0;
             this._listBoxContacts.DoubleClick += new System.EventHandler(this.OnContactEdit);
             this._listBoxContacts.KeyUp += new System.Windows.Forms.KeyEventHandler(this.OnListKeyUp);
+            // 
+            // _listBoxSentMessages
+            // 
+            this._listBoxSentMessages.FormattingEnabled = true;
+            this._listBoxSentMessages.Location = new System.Drawing.Point(3, 1);
+            this._listBoxSentMessages.Name = "_listBoxSentMessages";
+            this._listBoxSentMessages.Size = new System.Drawing.Size(253, 420);
+            this._listBoxSentMessages.TabIndex = 0;
+            // 
+            // sendToolStripMenuItem
+            // 
+            this.sendToolStripMenuItem.Name = "sendToolStripMenuItem";
+            this.sendToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sendToolStripMenuItem.Text = "Send ";
+            this.sendToolStripMenuItem.Click += new System.EventHandler(this.sendToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -168,6 +192,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -189,6 +214,8 @@
         private System.Windows.Forms.ToolStripMenuItem messageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.ListBox _listBoxSentMessages;
+        private System.Windows.Forms.ToolStripMenuItem sendToolStripMenuItem;
     }
 }
 

@@ -12,6 +12,9 @@ namespace ContactManager
 {
     public interface IMessageServices
     {
-        void Send( string emailAddress, string subject, string message );
+        void Send(Message message);
+
+        IEnumerable<Message> GetAll();
     }
+
 }
