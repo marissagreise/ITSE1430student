@@ -9,7 +9,7 @@ namespace ContactManager.Memory
 {
    public class MemoryMessageDatabase : MessageSendDatabase
     {
-        protected override SendCore( Message message )
+        protected override void SendCore( Message message )
         {
             _items.Add(message);
         }

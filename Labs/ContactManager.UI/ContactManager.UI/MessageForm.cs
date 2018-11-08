@@ -27,9 +27,10 @@ namespace ContactManager.UI
 
         private void MessageForm_Load( object sender, EventArgs e )
         {
-            if (Message != null)
+            if (message != null)
             {
-                _txtName.Text = Message.Name;
+                _txtName.Text = message.Name;
+                _txtEmailAddress.Text = message.EmailAddress;
             }
         }
     }

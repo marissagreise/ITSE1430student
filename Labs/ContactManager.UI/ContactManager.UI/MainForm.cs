@@ -130,7 +130,7 @@ namespace ContactManager.UI
             };
         }
 
-        private void sendToolStripMenuItem_Click( object sender, EventArgs e )
+        private void OnMessageSend( object sender, EventArgs e )
         {
 
         }
