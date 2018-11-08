@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -31,6 +32,9 @@ namespace Itse1430.MovieLib.UI
         {
             base.OnLoad(e);
 
+            var connString = ConfigurationManager.ConnectionStrings["Database"]
+                                .ConnectionString;
+            _database = new SqlMovieDatabase(connString);
             _listMovies.DisplayMember = "Name";
             RefreshMovies();
         }
@@ -157,6 +161,6 @@ namespace Itse1430.MovieLib.UI
         {
             return _listMovies.SelectedItem as Movie;       // using the as operator
         }
-        private IMovieDatabase _database = new SqlMovieDatabase();
+        private IMovieDatabase _database; // = new SqlMovieDatabase();
     }
 }
