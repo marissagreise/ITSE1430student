@@ -53,8 +53,9 @@
             // 
             this._txtName.Location = new System.Drawing.Point(66, 12);
             this._txtName.Name = "_txtName";
+            this._txtName.ReadOnly = true;
             this._txtName.Size = new System.Drawing.Size(246, 20);
-            this._txtName.TabIndex = 1;
+            this._txtName.TabIndex = 0;
             // 
             // label2
             // 
@@ -69,8 +70,9 @@
             // 
             this._txtEmailAddress.Location = new System.Drawing.Point(66, 39);
             this._txtEmailAddress.Name = "_txtEmailAddress";
+            this._txtEmailAddress.ReadOnly = true;
             this._txtEmailAddress.Size = new System.Drawing.Size(246, 20);
-            this._txtEmailAddress.TabIndex = 3;
+            this._txtEmailAddress.TabIndex = 1;
             // 
             // label3
             // 
@@ -87,16 +89,17 @@
             this._txtSubject.Multiline = true;
             this._txtSubject.Name = "_txtSubject";
             this._txtSubject.Size = new System.Drawing.Size(467, 25);
-            this._txtSubject.TabIndex = 5;
+            this._txtSubject.TabIndex = 2;
             // 
             // _btnSend
             // 
             this._btnSend.Location = new System.Drawing.Point(377, 253);
             this._btnSend.Name = "_btnSend";
             this._btnSend.Size = new System.Drawing.Size(75, 23);
-            this._btnSend.TabIndex = 6;
+            this._btnSend.TabIndex = 4;
             this._btnSend.Text = "Send";
             this._btnSend.UseVisualStyleBackColor = true;
+            this._btnSend.Click += new System.EventHandler(this.OnButtonSend);
             // 
             // label4
             // 
@@ -116,14 +119,14 @@
             this._txtMessage.Multiline = true;
             this._txtMessage.Name = "_txtMessage";
             this._txtMessage.Size = new System.Drawing.Size(467, 132);
-            this._txtMessage.TabIndex = 8;
+            this._txtMessage.TabIndex = 3;
             // 
             // _btnCancel
             // 
             this._btnCancel.Location = new System.Drawing.Point(458, 253);
             this._btnCancel.Name = "_btnCancel";
             this._btnCancel.Size = new System.Drawing.Size(75, 26);
-            this._btnCancel.TabIndex = 9;
+            this._btnCancel.TabIndex = 5;
             this._btnCancel.Text = "Cancel";
             this._btnCancel.UseVisualStyleBackColor = true;
             this._btnCancel.Click += new System.EventHandler(this.OnCancel);
@@ -146,6 +149,7 @@
             this.MaximumSize = new System.Drawing.Size(569, 331);
             this.MinimumSize = new System.Drawing.Size(569, 331);
             this.Name = "MessageForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Send Message";
             this.Load += new System.EventHandler(this.MessageForm_Load);
             this.ResumeLayout(false);

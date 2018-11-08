@@ -18,7 +18,8 @@ namespace ContactManager.UI
             InitializeComponent();
         }
 
-        public Message message { get; set; }
+        public Message Message { get; set; }
+        public Contact Contact { get; set; }
 
         private void OnCancel( object sender, EventArgs e )
         {
@@ -27,11 +28,41 @@ namespace ContactManager.UI
 
         private void MessageForm_Load( object sender, EventArgs e )
         {
-            if (message != null)
+            if (Contact != null)
             {
-                _txtName.Text = message.Name;
-                _txtEmailAddress.Text = message.EmailAddress;
+                _txtName.Text = Contact.Name;
+                _txtEmailAddress.Text = Contact.EmailAddress;
             }
+
+            if (Message != null)
+            {
+                _txtName.Text = Message.Name;
+                _txtEmailAddress.Text = Message.EmailAddress;
+            }
+
+            ValidateChildren();
+        }
+
+        private void OnButtonSend( object sender, EventArgs e )
+        {
+            if(String.IsNullOrEmpty(_txtSubject.Text))
+            {
+                MessageBox.Show("Subject is required", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var message = new Message()
+            {
+                Name = _txtName.Text,
+                EmailAddress = _txtEmailAddress.Text,
+                Subject = _txtSubject.Text,
+                ComposeMessage = _txtMessage.Text,
+            };
+
+            Message = message;
+            DialogResult = DialogResult.OK;
+
+            Close();  
         }
     }
 }

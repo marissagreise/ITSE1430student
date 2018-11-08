@@ -27,7 +27,10 @@ namespace ContactManager.UI
             base.OnLoad(e);
 
             _listBoxContacts.DisplayMember = "Name";
+            _listBoxSentMessages.DisplayMember = "Name";
+
             RefreshContacts();
+            RefreshMessages();
         }
 
         private void OnFileExit( object sender, EventArgs e )
@@ -73,19 +76,16 @@ namespace ContactManager.UI
 
         private void EditContact()
         {
-            //Get selected contact, if any
             var item = GetSelectedContact();
             if (item == null)
                 return;
 
-            //Show form with selected contact
             var form = new ContactForm();
             form.Text = "Edit Contact";
             form.Contact = item;
             if (form.ShowDialog(this) == DialogResult.Cancel)
                 return;
 
-            //Update database and refresh
             _database.Edit(item.Name, form.Contact);
             RefreshContacts();
         }
@@ -93,6 +93,11 @@ namespace ContactManager.UI
         private Contact GetSelectedContact()
         {
             return _listBoxContacts.SelectedItem as Contact;
+        }
+
+        private Message GetSelectedMessge()
+        {
+            return _listBoxSentMessages.SelectedItem as Message;
         }
 
         private void OnContactDoubleClick( object sender, EventArgs e )
@@ -114,7 +119,7 @@ namespace ContactManager.UI
             if (item == null)
                 return;
 
-            if (MessageBox.Show("Are you sure you want to Delete " + item.Name + " ?",
+            if (MessageBox.Show("Are you sure you want to delete " + item.Name + " ?",
                      "Delete Contact", MessageBoxButtons.YesNo) == DialogResult.No)
                 return;
             
@@ -132,7 +137,26 @@ namespace ContactManager.UI
 
         private void OnMessageSend( object sender, EventArgs e )
         {
+            var item = GetSelectedContact();
+            if (item == null)
+                return;
 
+            var form = new MessageForm();
+            form.Contact = item;
+            if (form.ShowDialog(this) == DialogResult.Cancel)
+                return;
+
+            _sentMessages.Send(form.Message);
+            RefreshMessages();
+        }
+
+        private void RefreshMessages()
+        {
+            var messages = from m in _sentMessages.GetAll()
+                           select m;
+
+            _listBoxSentMessages.Items.Clear();
+            _listBoxSentMessages.Items.AddRange(messages.ToArray());
         }
     }
 }
