@@ -36,12 +36,12 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.messageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sendToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this._listBoxContacts = new System.Windows.Forms.ListBox();
             this._listBoxSentMessages = new System.Windows.Forms.ListBox();
-            this.sendToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -120,6 +120,13 @@
             this.messageToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.messageToolStripMenuItem.Text = "Message";
             // 
+            // sendToolStripMenuItem
+            // 
+            this.sendToolStripMenuItem.Name = "sendToolStripMenuItem";
+            this.sendToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.sendToolStripMenuItem.Text = "Send ";
+            this.sendToolStripMenuItem.Click += new System.EventHandler(this.OnMessageSend);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -155,6 +162,8 @@
             // 
             // _listBoxContacts
             // 
+            this._listBoxContacts.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this._listBoxContacts.FormattingEnabled = true;
             this._listBoxContacts.Location = new System.Drawing.Point(0, 3);
             this._listBoxContacts.Name = "_listBoxContacts";
@@ -165,18 +174,13 @@
             // 
             // _listBoxSentMessages
             // 
+            this._listBoxSentMessages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this._listBoxSentMessages.FormattingEnabled = true;
             this._listBoxSentMessages.Location = new System.Drawing.Point(3, 1);
             this._listBoxSentMessages.Name = "_listBoxSentMessages";
             this._listBoxSentMessages.Size = new System.Drawing.Size(253, 420);
             this._listBoxSentMessages.TabIndex = 0;
-            // 
-            // sendToolStripMenuItem
-            // 
-            this.sendToolStripMenuItem.Name = "sendToolStripMenuItem";
-            this.sendToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.sendToolStripMenuItem.Text = "Send ";
-            this.sendToolStripMenuItem.Click += new System.EventHandler(this.OnMessageSend);
             // 
             // MainForm
             // 
