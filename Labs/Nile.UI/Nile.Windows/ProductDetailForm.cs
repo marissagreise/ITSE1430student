@@ -26,7 +26,7 @@ namespace Nile.Windows
             Product = product;
         }
         #endregion
-        
+
         /// <summary>Gets or sets the product being shown.</summary>
         public Product Product { get; set; }
 
@@ -70,6 +70,13 @@ namespace Nile.Windows
             };
 
             //TODO: Validate product
+            var results = ObjectValidator.TryValidate(product);
+            foreach(var result in results)
+            {
+                MessageBox.Show(this, result.ErrorMessage, "Validation Failed", MessageBoxButtons.OK);
+
+                return;
+            }
 
             Product = product;
             DialogResult = DialogResult.OK;
