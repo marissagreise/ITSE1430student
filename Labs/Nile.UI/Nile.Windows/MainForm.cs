@@ -140,5 +140,10 @@ namespace Nile.Windows
 
         private readonly IProductDatabase _database = new Nile.Stores.MemoryProductDatabase();
         #endregion
+
+        private void OnHelpAbout( object sender, EventArgs e )
+        {
+            MessageBox.Show(this, "Marissa Greise\nFall 2018\nITSE 1430", "Help", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
     }
 }
