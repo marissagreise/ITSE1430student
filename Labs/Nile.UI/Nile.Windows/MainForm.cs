@@ -22,12 +22,7 @@ namespace Nile.Windows
             base.OnLoad(e);
 
             _gridProducts.AutoGenerateColumns = false;
-
-            //var connString = ConfigurationManager
-            //                   .ConnectionStrings["Database"]
-            //                   .ConnectionString;
-            //_database = new SqlMovieDatabase(connString);
-
+            
             UpdateList();
         }
 
@@ -43,6 +38,17 @@ namespace Nile.Windows
             var child = new ProductDetailForm("Product Details");
             if (child.ShowDialog(this) != DialogResult.OK)
                 return;
+
+            while(_database.ExistingProduct(child.Product.Name))
+            {
+                var temp = new ProductDetailForm("Product Details");
+                temp.Product = child.Product;
+
+                MessageBox.Show("Cannot duplicate names", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                if (child.ShowDialog(this) == DialogResult.Cancel)
+                    return;
+            }
 
             //TODO: Handle errors
             //Save product

@@ -65,5 +65,10 @@ namespace Nile.Stores.Sql
 
         private SqlConnection CreateConnection()
                => new SqlConnection(_connectionString);
+
+        protected override Product FindByName( string name )
+        {
+            throw new NotImplementedException();
+        }
     }
 }
