@@ -23,6 +23,11 @@ namespace Nile.Windows
 
             _gridProducts.AutoGenerateColumns = false;
 
+            //var connString = ConfigurationManager
+            //                   .ConnectionStrings["Database"]
+            //                   .ConnectionString;
+            //_database = new SqlMovieDatabase(connString);
+
             UpdateList();
         }
 
@@ -39,7 +44,6 @@ namespace Nile.Windows
             if (child.ShowDialog(this) != DialogResult.OK)
                 return;
 
-           
             //TODO: Handle errors
             //Save product
             try

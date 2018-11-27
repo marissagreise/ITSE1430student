@@ -130,6 +130,8 @@ namespace Nile.Windows
             // 
             // aboutToolStripMenuItem
             // 
+            this.aboutToolStripMenuItem.Checked = true;
+            this.aboutToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
