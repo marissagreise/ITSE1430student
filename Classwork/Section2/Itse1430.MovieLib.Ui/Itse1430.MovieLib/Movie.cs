@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Itse1430.MovieLib
 {
-    [Description("A Movie")]
+    [Description("A Movie ")]
     public class Movie : IValidatableObject 
     {
         [Required(AllowEmptyStrings = false)]
