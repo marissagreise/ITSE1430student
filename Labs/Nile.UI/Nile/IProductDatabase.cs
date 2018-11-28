@@ -17,6 +17,7 @@ namespace Nile
         /// <summary>Get a specific product.</summary>
         /// <returns>The product, if it exists.</returns>
         Product Get ( int id );
+        bool ExistingProduct( string name );
 
         /// <summary>Gets all products.</summary>
         /// <returns>The products.</returns>

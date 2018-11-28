@@ -15,8 +15,11 @@ namespace Nile.Stores
         public Product Add ( Product product )
         {
             //TODO: Check arguments
+            if (product == null)
+                throw new ArgumentNullException("null product");
 
             //TODO: Validate product
+            ObjectValidator.Validate(product);
 
             //Emulate database by storing copy
             return AddCore(product);
@@ -27,8 +30,18 @@ namespace Nile.Stores
         public Product Get ( int id )
         {
             //TODO: Check arguments
-
-            return GetCore(id);
+            if(id <  0 )
+            {
+                throw new Exception("Invalid Id");
+            }
+            try
+            {
+                return GetCore( id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Get failed.", e);
+            }
         }
         
         /// <summary>Gets all products.</summary>
@@ -43,8 +56,14 @@ namespace Nile.Stores
         public void Remove ( int id )
         {
             //TODO: Check arguments
-
-            RemoveCore(id);
+           try
+            {
+                RemoveCore(id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Remove failed", e);
+            }  
         }
         
         /// <summary>Updates a product.</summary>
@@ -53,11 +72,22 @@ namespace Nile.Stores
         public Product Update ( Product product )
         {
             //TODO: Check arguments
+            if (product.Name == null)
+                throw new ArgumentNullException(nameof(product.Name));
+            else if (product.Name == "")
+                throw new ArgumentException("Name cannot be empty.", nameof(product.Name));
+            else if (product.Id < 0)
+                throw new ArgumentException("Id must be > 0.", nameof(product.Id));
+            else if (product.Price < 0)
+                throw new ArgumentException("Price must be > 0.", nameof(product.Price));
 
             //TODO: Validate product
+            ObjectValidator.Validate(product);
 
             //Get existing product
             var existing = GetCore(product.Id);
+            if (existing == null)
+                throw new Exception("Product cannot be found.");
 
             return UpdateCore(existing, product);
         }
@@ -74,5 +104,15 @@ namespace Nile.Stores
 
         protected abstract Product AddCore( Product product );
         #endregion
+        protected abstract Product FindByName( string name );
+
+        public bool ExistingProduct(string name)
+        {
+            var exist = FindByName(name);
+            if (exist == null)
+                return false;
+            else
+                return true;
+        }
     }
 }
