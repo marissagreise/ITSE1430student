@@ -19,6 +19,11 @@ namespace Itse1430.MovieLib.Sql
 
             _connectionString = connectionString;
         }
+
+        public SqlMovieDatabase()
+        {
+        }
+
         private readonly string _connectionString;
 
         protected override void AddCore( Movie movie )

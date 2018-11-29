@@ -36,7 +36,7 @@ namespace Itse1430.MovieLib
         [Range(0, Int32.MaxValue, ErrorMessage ="Run length must be >= 0.")]
         public int RunLength { get; set; }
        
-        public int Id { get; private set; }
+        public int Id { get;  set; }
 
         //Using calculated property with no setter
         public bool IsColor => ReleaseYear > 1940; // using lambda
