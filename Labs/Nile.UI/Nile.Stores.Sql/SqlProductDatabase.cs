@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ * Marissa Greise
+ * ITSE 1430
+ * 12/3/2018
+ */
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -25,23 +30,23 @@ namespace Nile.Stores.Sql
         {
             //var conn = new SqlConnection(_connectionString);
             throw new NotImplementedException();
-            // Run command
+            //Run command
             //try
             //using (var conn = CreateConnection())
             //{
-            //    var cmd = new SqlCommand("AddMovie", conn);
+            //    var cmd = new SqlCommand("AddProduct", conn);
             //    cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-            //    cmd.Parameters.AddWithValue("@Name", product.Name);
+            //    cmd.Parameters.AddWithValue("@name", product.Name);
+            //    cmd.Parameters.AddWithValue("@description", product.Description);
             //    cmd.Parameters.AddWithValue("@Price", product.Price);
             //    cmd.Parameters.AddWithValue("@isDiscontinued", product.IsDiscontinued);
-            //    cmd.Parameters.AddWithValue("@description", product.Description);
-
+               
             //    conn.Open();
             //    var result = cmd.ExecuteScalar();
             //    var id = Convert.ToInt32(result);
             //};
-        }
+            }
 
         protected override IEnumerable<Product> GetAllCore()
         {
@@ -56,7 +61,25 @@ namespace Nile.Stores.Sql
         protected override void RemoveCore( int id )
         {
             throw new NotImplementedException();
-        }
+
+            //var product = FindByName(name);
+            //if (product == null)
+            //    return;
+
+            //using (var conn = CreateConnection())
+            //{
+            //    var cmd = conn.CreateCommand();
+            //    cmd.CommandText = "RemoveMovie";
+            //    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+            //    var id = GetProductId(product);
+            //    cmd.Parameters.AddWithValue("@id", id);
+
+            //    conn.Open();
+            //    cmd.ExecuteNonQuery();
+
+
+            }
 
         protected override Product UpdateCore( Product existing, Product newItem )
         {
@@ -70,5 +93,10 @@ namespace Nile.Stores.Sql
         {
             throw new NotImplementedException();
         }
+
+        //private object GetProductId (Product product)
+        //{
+        //    var sql = product as SqlPr
+        //}
     }
 }
