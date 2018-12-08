@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ * Marissa Greise
+ * ITSE 1430 
+ * 12/5/2018
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -26,27 +31,27 @@ namespace EventPlanner.Mvc.Models
                 };
             }
 
-            ////Using a simple mapping layer using a method
-            //public Itse1430.MovieLib.Movie ToDomain()
-            //{
-            //    return new Itse1430.MovieLib.Movie()
-            //    {
-            //        Name = Name,
-            //        Description = Description,
-            //        ReleaseYear = ReleaseYear,
-            //        RunLength = RunLength,
-            //        IsOwned = IsOwned,
-            //    };
-            //}
-            
+        ////Using a simple mapping layer using a method
+        //public Itse1430.MovieLib.Movie ToDomain()
+        //{
+        //    return new Itse1430.MovieLib.Movie()
+        //    {
+        //        Name = Name,
+        //        Description = Description,
+        //        ReleaseYear = ReleaseYear,
+        //        RunLength = RunLength,
+        //        IsOwned = IsOwned,
+        //    };
+        //}
 
-            [Required(AllowEmptyStrings = false)]
+
+        [Required(AllowEmptyStrings = false)]
             public string Name { get; set; }
 
             public string Description { get; set; }
 
             [Display(Name = "Start Date")]
-            public DateTime StartDate { get; set; };
+            public DateTime StartDate { get; set; }
 
             [Display(Name = "End Date")]
             [DateCorrectRange(ValidateEndDate = true, ErrorMessage = "End Date must be >= Start Date.")]

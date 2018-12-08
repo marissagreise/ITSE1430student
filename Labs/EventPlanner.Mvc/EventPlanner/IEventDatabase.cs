@@ -47,5 +47,6 @@ namespace EventPlanner
         /// <param name="id">The event to remove.</param>
         /// <exception cref="ArgumentOutOfRangeException"><paramref name="id"/> is less than or equal to zero.</exception>
         void Remove ( int id );
+        object GetAll();
     }
 }
