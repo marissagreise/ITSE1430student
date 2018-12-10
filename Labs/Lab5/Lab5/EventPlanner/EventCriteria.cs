@@ -8,7 +8,6 @@ namespace EventPlanner
     /// <summary>Defines criteria for finding events.</summary>
     public struct EventCriteria
     {
-
         /// <summary>Determines if public events are included.</summary>
         public bool IncludePublic { get; set; }
 

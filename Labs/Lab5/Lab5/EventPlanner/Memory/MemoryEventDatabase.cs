@@ -14,6 +14,7 @@ namespace EventPlanner.Memory
         {
             Verify.ArgumentIsValidAndNotNull(nameof(evt), evt);
 
+            //An event with the same name cannot exist.
             var existing = FindByName(evt.Name);
             if (existing != null)
                 throw new Exception("Event already exists.");
@@ -108,6 +109,5 @@ namespace EventPlanner.Memory
         private readonly List<ScheduledEvent> _items = new List<ScheduledEvent>();
         private int _id = 1;
         #endregion
-       
     }
 }

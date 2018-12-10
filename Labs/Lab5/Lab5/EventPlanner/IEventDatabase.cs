@@ -1,7 +1,5 @@
 ﻿/*
- * Marissa Greise
- * ITSE 1430 
- * 12/5/2018
+ * ITSE 1430
  */
 using System;
 using System.Collections.Generic;

@@ -18,105 +18,145 @@ namespace EventPlanner.Mvc.Controllers
     {
         public EventController()
         {
-            
+
+        }
+
+        public ActionResult Index()
+        {
+            return View();
         }
 
         [HttpGet]
         public ActionResult My()
         {
-            var items = DatabaseFactory.GetEvents();
+            EventCriteria ec = default(EventCriteria);
+            ec.IncludePublic = true;
+            ec.IncludePrivate = true;
 
-            return View(items.Select(i => new EventModel(i)));
-            //return View("Index");
+            var events = DatabaseFactory.Database.GetAll(ec);
+
+            return View(events.Select(e => new EventModel(e))
+                .Where(e => e.EndDate > DateTime.Now)
+                .OrderBy(e=> e.StartDate));
+
         }
-        
+
+        [HttpGet]
+        public ActionResult Public()
+        {
+            EventCriteria ec = default(EventCriteria);
+            ec.IncludePrivate = false;
+            ec.IncludePublic = true;
+            var events = DatabaseFactory.Database.GetAll(ec);
+            return View(events.Select(e => new EventModel(e))
+               .Where(e => e.EndDate > DateTime.Now)
+               .OrderBy(e => e.StartDate));
+        }
+
+        [HttpGet]
+        public ActionResult Details( int id )
+        {
+            var item = DatabaseFactory.Database.Get(id);
+
+            return View(new EventModel(item));
+        }
+
+
         [HttpGet]
         public ActionResult Create()
         {
             var model = new EventModel();
+            model.StartDate = DateTime.Now;
+            model.EndDate = DateTime.Now;
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult Create( EventModel model )
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var item = model.ToDomain();
+
+                    DatabaseFactory.Database.Add(item);
+                    if (item.IsPublic)
+                        return RedirectToAction("Public");
+                    else
+                        return RedirectToAction("My");
+
+                } catch (Exception e)
+                {
+                    ModelState.AddModelError("", e.Message);
+                };
+            };
 
             return View(model);
         }
 
-        //[HttpGet]
-        //public ActionResult Edit( int id )
-        //{
-        //    var item = _database.GetAll().FirstOrDefault(i => i.Id == id);
+        [HttpGet]
+        public ActionResult Edit( int id )
+        {
+            var item = DatabaseFactory.Database.Get(id);
 
-        //    return View(new EventModel(item));
-        //}
+            return View(new EventModel(item));
+        }
 
-        //[HttpPost]
-        //public ActionResult Edit( EventModel model )
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            var item = model.ToDomain();
+        [HttpPost]
+        public ActionResult Edit( EventModel model )
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var item = model.ToDomain();
+                    DatabaseFactory.Database.Update(item.Id, item);
+                                        
+                    if( item == null)
+                        return HttpNotFound();
 
-        //            var existing = _database.GetAll()
-        //                                .FirstOrDefault(i => i.Id == model.Id);
-        //            _database.Edit(existing.Name, item);
+                    if(item.IsPublic)
+                        return RedirectToAction("Public");
+                    else
+                        return RedirectToAction("My");
+                } catch (Exception e)
+                {
+                    ModelState.AddModelError("", e.Message);
+                };
+            };
 
-        //            return RedirectToAction("Index");
-        //        } catch (Exception e)
-        //        {
-        //            ModelState.AddModelError("", e.Message);
-        //        };
-        //    };
+            return View(model);
+        }
 
-        //    return View(model);
-        //}
+        [HttpGet]
+        public ActionResult Delete( int id )
+        {
+            var item = DatabaseFactory.Database.Get(id);
+       
+            return View(new EventModel(item));
+        }
 
-        //[HttpPost]
-        //public ActionResult Create( EventModel model )
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            var item = model.ToDomain();
+        [HttpPost]
+        public ActionResult Delete( EventModel model )
+        {
+            try
+            {             
+                var existing = DatabaseFactory.Database.Get(model.Id);
 
-        //            _database.Add(item);
+                if (existing == null)
+                    return HttpNotFound();
 
-        //            return RedirectToAction("Index");
-        //        } catch (Exception e)
-        //        {
-        //            ModelState.AddModelError("", e.Message);
-        //        };
-        //    };
+                DatabaseFactory.Database.Remove(existing.Id);
 
-        //    return View(model);
-        //}
-
-        //[HttpGet]
-        //public ActionResult Delete( int id )
-        //{
-        //    var item = _database.GetAll().FirstOrDefault(i => i.Id == id);
-
-        //    return View(new EventModel(item));
-        //}
-
-        //[HttpPost]
-        //public ActionResult Delete( EventModel model )
-        //{
-        //    try
-        //    {
-        //        var existing = _database.GetAll().FirstOrDefault(i => i.Id == model.Id);
-        //        if (existing == null)
-        //            return HttpNotFound();
-
-        //        _database.Remove(existing.Name);
-
-        //        return RedirectToAction("Index");
-        //    } catch (Exception e)
-        //    {
-        //        ModelState.AddModelError("", e.Message);
-        //        return View(model);
-        //    };
-        //}
-
-        private readonly IEventDatabase _eventDatabase;
+                if (model.IsPublic)
+                    return RedirectToAction("Public");
+                else
+                    return RedirectToAction("My");
+            } catch (Exception e)
+            {
+                ModelState.AddModelError("", e.Message);
+                return View(model);
+            };
+        }
     }
 }

@@ -13,73 +13,76 @@ namespace EventPlanner.Mvc.Models
 {
     public class EventModel
     {
-            public EventModel()
-            {
-            }
-
-            //Using simple mapping layer using a constructor
-            public EventModel( EventPlanner.ScheduledEvent item )
-            {
-                if (item != null)
-                {
-                    Id = item.Id;
-                    Name = item.Name;
-                    Description = item.Description;
-                    StartDate = item.StartDate;
-                    EndDate = item.EndDate;
-                  
-                };
-            }
-
-        ////Using a simple mapping layer using a method
-        //public Itse1430.MovieLib.Movie ToDomain()
-        //{
-        //    return new Itse1430.MovieLib.Movie()
-        //    {
-        //        Name = Name,
-        //        Description = Description,
-        //        ReleaseYear = ReleaseYear,
-        //        RunLength = RunLength,
-        //        IsOwned = IsOwned,
-        //    };
-        //}
-
-
-        [Required(AllowEmptyStrings = false)]
-            public string Name { get; set; }
-
-            public string Description { get; set; }
-
-            [Display(Name = "Start Date")]
-            public DateTime StartDate { get; set; }
-
-            [Display(Name = "End Date")]
-            [DateCorrectRange(ValidateEndDate = true, ErrorMessage = "End Date must be >= Start Date.")]
-            public DateTime EndDate { get; set; }
-
-            public int Id { get; set; }
-
-        }
-        [AttributeUsage(AttributeTargets.Property)]
-        public class DateCorrectRangeAttribute : ValidationAttribute
+        public EventModel()
         {
-            public bool ValidateStartDate { get; set; }
-            public bool ValidateEndDate { get; set; }
+        }
+
+        public EventModel( ScheduledEvent item )
+        {
+            if (item != null)
+            {
+                Id = item.Id;
+                Name = item.Name;
+                Description = item.Description;
+                StartDate = item.StartDate;
+                EndDate = item.EndDate;
+                IsPublic = item.IsPublic;
+
+            };
+        }
+
+        public ScheduledEvent ToDomain()
+        {
+            return new ScheduledEvent()
+            {
+                Id = Id,
+                Name = Name,
+                Description = Description,
+                StartDate = StartDate,
+                EndDate = EndDate,
+                IsPublic = IsPublic
+            };
+        }
+
+        public int Id { get; set; }
+        [Required(AllowEmptyStrings = false)]
+        public string Name { get; set; }
+        public string Description { get; set; }
+
+        [Display(Name = "Start Date")]
+        public DateTime StartDate { get; set; }
+
+        [Display(Name = "End Date")]
+        [DateGreaterThan("StartDate")]
+        public DateTime EndDate { get; set; }
+        public bool IsPublic { get; set; }
+
+    }
+        [AttributeUsage(AttributeTargets.Property)]
+        public class DateGreaterThanAttribute : ValidationAttribute
+        {
+            public DateGreaterThanAttribute(string dateToCompare)
+            {
+                DateToCompare = dateToCompare;
+            }
+            private string DateToCompare { get; set; }
 
             protected override ValidationResult IsValid( object value, ValidationContext validationContext )
             {
+                DateTime endDate = (DateTime)value;
+
+                DateTime startDate = (DateTime)validationContext.ObjectType.
+                GetProperty(DateToCompare).GetValue(validationContext.ObjectInstance, null);
                 var model = validationContext.ObjectInstance as EventModel;
 
-                if (model != null)
+                if (endDate > startDate)
                 {
-                    if (model.StartDate > model.EndDate && ValidateEndDate
-                        || (model.StartDate > DateTime.Now.Date && ValidateStartDate))
-                    {
-                        return new ValidationResult(string.Empty);
-                    }
-                }
-
-                return ValidationResult.Success;
+                    return ValidationResult.Success;
+                } else
+                {
+                    return new ValidationResult("Date is not later than start date");
+                }              
             }
         }
-    }
+    
+ }

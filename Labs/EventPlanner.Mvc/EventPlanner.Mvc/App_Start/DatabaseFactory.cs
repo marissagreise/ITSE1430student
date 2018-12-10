@@ -13,55 +13,33 @@ namespace EventPlanner.Mvc.App_Start
 {
     public class DatabaseFactory
     {
-            //Normal instance methods go here...
+        public static IEventDatabase Database { get; }
 
-            //Singleton pattern exposes the one instance using a static field/property
-            public static DatabaseFactory Instance { get; } = CreateInstance();
-
-            private static DatabaseFactory CreateInstance()
+        static DatabaseFactory()
             {
-                var db = new DatabaseFactory();           
+                var db = new MemoryEventDatabase();
 
-                return db;
+            ScheduledEvent e = new ScheduledEvent()
+            {
+                Name = "Mom Birthday Party",
+                Description = "When my mom turns 30 for the 20th time",
+                StartDate = new DateTime(2019, 10, 21, 9, 0,0),
+                EndDate = new DateTime(2019, 10, 22, 9, 0,0),
+                IsPublic = false
+            };
+            ScheduledEvent a = new ScheduledEvent()
+            {
+                Name = "Aunt Grace Birthday Party",
+                Description = "Dinner at Mi Cocina",
+                StartDate = new DateTime(2019, 7, 5, 3, 0, 0),
+                EndDate = new DateTime(2019, 7, 6, 9, 0, 0),
+                IsPublic = true
+            };
+            db.Add(e);
+            db.Add(a);
+
+            Database = db;
             }
 
-           private static IEventDatabase _eventDatabase;
-
-        //    static DatabaseFactory()
-        //    {
-        //        _eventDatabase = new MemoryEventDatabase();
-
-        //        ScheduledEvent e = new ScheduledEvent()
-        //        {
-        //            Name = "Mom Birthday Party",
-        //            Description = "When my mom turns 30 for the 20th time",
-        //            StartDate = new DateTime(2018, 10, 1, 9, 2, 2),
-        //            EndDate = new DateTime(2018, 10, 1, 9, 2, 2),
-        //            IsPublic = false
-        //        };
-        //        ScheduledEvent a = new ScheduledEvent()
-        //        {
-        //            Name = "Aunt Grace Birthday Party",
-        //            Description = "Dinner at Mi Cocina",
-        //            StartDate = new DateTime(2019, 10, 1, 9, 2, 2),
-        //            EndDate = new DateTime(2018, 10, 1, 9, 2, 2),
-        //            IsPublic = true
-        //         };
-        //        _eventDatabase.Add(e);
-        //        _eventDatabase.Add(a);
-        //    }
-
-        //    public static IEventDatabase GetDatabase()
-        //    {
-        //        return _eventDatabase;
-        //    }
-
-        //    public  static IEnumerable<ScheduledEvent> GetEvents()
-        //    {
-        //        EventCriteria eventCriteria = default(EventCriteria);
-        //        eventCriteria.IncludePrivate = true;
-        //        eventCriteria.IncludePublic = false;
-        //        return _eventDatabase.GetAll(eventCriteria);
-        //    }
     }
 }
